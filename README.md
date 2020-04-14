@@ -1,3 +1,3 @@
 # front-end-PayLive
 
-# run npm install
+# run npm install / yarn install
