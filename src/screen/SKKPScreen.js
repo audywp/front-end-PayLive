@@ -37,7 +37,7 @@ export default class SKKPScreen extends Component {
           <View style={{ marginTop: 10, paddingLeft: 20, paddingRight: 20 }}>
             <Text style={{ fontSize: 12, textAlign: 'left' }}>
               1. Untuk dapat menjadi pengguna Aplikasi OVO (“Pengguna OVO”),
-              Anda harus melakukan registrasi (i) melalui Aplikasi OVO, atau (ii) Partner OVO
+              Anda harus melakukan registrasi (i) melalui Aplikasi PayLive, atau (ii) Partner OVO
             </Text>
             <Text style={{ fontSize: 12, textAlign: 'left' }}> 2. Anda wajib memastikan kebenaran dan keakuratan setiap data,
             informasi dan/atau keterangan dalam bentuk apapun yang dari waktu ke waktu Anda sampaikan
