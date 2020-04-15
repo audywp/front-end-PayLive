@@ -7,6 +7,12 @@ import IconUser from 'react-native-vector-icons/EvilIcons'
 
 const { width: WIDTH } = Dimensions.get('window')
 export default class LoginScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.changeScreenToJoin = () => {
+      this.props.navigation.navigate('Join PayLive')
+    }
+  }
   render() {
     return (
       <View style={styles.parent}>
@@ -28,7 +34,7 @@ export default class LoginScreen extends Component {
                 <Text style={{ color: 'white' }}>SIGN IN</Text>
               </TouchableOpacity>
               <Text style={{ color: '#fff', marginTop: 20 }}> ATAU </Text>
-              <TouchableOpacity style={styles.btnJoinNow}>
+              <TouchableOpacity style={styles.btnJoinNow} onPress={this.changeScreenToJoin}>
                 <Text style={{ color: 'white' }}>JOIN NOW</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{ marginTop: 20 }}>
