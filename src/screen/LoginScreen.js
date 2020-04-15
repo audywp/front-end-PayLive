@@ -28,7 +28,7 @@ export default class LoginScreen extends Component {
             <View style={{ width: '70%', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
               <Item floatingLabel style={{ width: '100%', alignItems: 'center' }}>
                 <Label style={styles.input} >Nomor Ponsel</Label>
-                <Input style={{ color: '#fff' }} />
+                <Input style={{ color: '#fff' }} keyboardType='phone-pad' />
               </Item>
               <TouchableOpacity style={styles.btnSignIn}>
                 <Text style={{ color: 'white' }}>SIGN IN</Text>

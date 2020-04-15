@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
+
+const { width: WIDTH } = Dimensions.get('window')
 export default class SKKPScreen extends Component {
+  constructor(props){
+    super(props)
+    this.changeScreenToCodeOTP= () => {
+      this.props.navigation.navigate('CodeOTP')
+    }
+  }
   render() {
     return (
       <ScrollView>
@@ -71,9 +79,27 @@ export default class SKKPScreen extends Component {
               Untuk OVO Club, maksimum saldo OVO Cash adalah Rp 2.000.000 (dua juta Rupiah) dengan batas nilai transaksi dalam 1 (satu) bulan paling banyak Rp20.000.000 (dua puluh juta Rupiah), yang diperhitungkan dari transaksi yang bersifat incoming.
               Untuk dapat memanfaatkan fitur layanan lainnya pada Aplikasi OVO, maka Anda dapat meng-upgrade akun OVO Club Anda menjadi akun OVO Premier.
             </Text>
+            <TouchableOpacity style={styles.btn} onPress={this.changeScreenToCodeOTP}>
+          <Text>Berikutnya</Text>
+        </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  btn: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#00d2d3',
+    justifyContent: 'center',
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+
+})
