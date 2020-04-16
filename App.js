@@ -9,7 +9,6 @@ import LupaSecurityCode from './src/Screen/LupaSecurityCode'
 import CodeOTP from './src/Screen/CodeOTPScreen'
 import GreetingUser from './src/Screen/GreetingUser'
 import BottomStack from './src/Screen/BottomStack'
-
 const Stack = createStackNavigator()
 
 
@@ -32,3 +31,4 @@ export default class App extends Component {
     )
   }
 }
+
