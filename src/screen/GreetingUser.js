@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, SafeAreaView, ScrollView, Dimensions} from 'react-native'
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import HorizontalScrollView from '../components/HorizontalScrolView'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { StyleSheet, View, Text, Image, ScrollView, Dimensions} from 'react-native'
+import { Card} from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
@@ -36,7 +34,7 @@ export default class GreetingUser extends Component {
                 <Text style={{fontSize: 15, color: '#3F458E', textAlign: 'center', fontWeight: 'bold', marginTop: 20}}>Anda Bisa Atur Keuangan Dengan Tepat</Text>
                 <Text style={{fontSize: 15, color: '#3F458E', textAlign: 'center', marginTop: 20}}>Tidak ada kebocoran keuangan karena sudah memiliki perencanaan dan dan bisa melihat riwayat </Text>
                 <TouchableOpacity style={styles.btn} onPress={this.changeScreenToLogin}>
-          <Text>Berikutnya</Text>
+          <Text style={{color: '#fff'}}>Mulai</Text>
         </TouchableOpacity>
             </Card>
       </ScrollView>

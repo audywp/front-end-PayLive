@@ -52,6 +52,9 @@ export default class JoinPayLive extends Component {
     }
     this.changeScreenSKKP = () => {
       this.props.navigation.navigate('SKKP')
+      this.checkData = () => {
+        if( nam)
+      }
     }
 
     this.checkButton = () => {
@@ -107,17 +110,18 @@ export default class JoinPayLive extends Component {
               !this.state.emailError ? false : 'Silahkan masukan email anda'
             }
           />
+          <View style={{flexDirection: 'row'}}>
           <CheckBox
             onPress = {this.checkButton}
-            title='Click Here'
+            // title={}
             checked={this.state.checked}
+            CheckBox={{color: '48387E'}}
           />
-
-          {/* <CheckBox checked={this.state.checked} onpress= { () => { this.setState({
-            checked: !this.state.checked,
-            activeBtn: !this.state.activeBtn
-          })}}
-           /> */}
+          <TouchableOpacity style={{marginTop: 10, paddingRight: 50}}>
+            <Text>Saya setuju dengan <Text style={styles.textSKKP}>Syarat dan Ketentuan </Text> 
+             dan Kebijakan Privasi</Text>
+          </TouchableOpacity>
+          </View>
         </View>
         <TouchableOpacity disabled={this.state.activeBtn} style={this.state.activeBtn ? styles.disabledBtn : styles.btn} onPress={this.changeScreenSKKP}>
           <Text>Berikutnya</Text>
@@ -160,6 +164,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     backgroundColor: '#CED6E0'
+  },
+  textSKKP : {
+    color: '#1e90ff',
+    fontWeight: 'bold'
   }
 
 })
