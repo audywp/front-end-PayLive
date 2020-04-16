@@ -7,6 +7,7 @@ import SKKP from './src/screen/SKKPScreen'
 import SecurityCode from './src/screen/SecurityCode'
 import LupaSecurityCode from './src/screen/LupaSecurityCode'
 import CodeOTP from './src/screen/CodeOTPScreen'
+import GreetingUser from './src/screen/GreetingUser'
 
 const Stack = createStackNavigator()
 
@@ -20,6 +21,7 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator>
+        <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />
           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
           <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
           <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
