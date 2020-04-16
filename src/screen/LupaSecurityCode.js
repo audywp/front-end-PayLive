@@ -9,6 +9,7 @@ export default class LupaSecurityCode extends Component {
       }
     }
   render() {
+    console.disableYellowBox=true
     return (
       <View>
         <View>

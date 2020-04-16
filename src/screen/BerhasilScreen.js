@@ -4,6 +4,7 @@ import Icon from 'react-native-vektor-icons/AntDesign'
 
 export default class BerhasilScreen extends Component {
   render() {
+    console.disableYellowBox=true
     return (
       <View>
         <View>

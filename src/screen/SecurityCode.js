@@ -14,6 +14,7 @@ export default class SecurityCode extends Component {
     }
   }
   render() {
+    console.disableYellowBox=true
     return (
       <View>
         <View>

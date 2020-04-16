@@ -9,11 +9,26 @@ const { width: WIDTH } = Dimensions.get('window')
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      phone: 0,
+      phoneError: null
+    }
     this.changeScreenToJoin = () => {
       this.props.navigation.navigate('Join PayLive')
     }
+    this.checkphone = () => {
+      console.log('jajaja')
+      let req = /^(^\+62\s?|^0)(\d{3,4}?){2}\d{3,4}$/
+      console.log(req.test(this.state.phone));
+      if (!req.test(this.state.phone)) {
+        this.setState({ phoneError: 'Nomor ponsel anda salah' })
+      } else {
+        this.setState({ phoneError: null })
+      }
+    }
   }
   render() {
+    console.disableYellowBox=true
     return (
       <View style={styles.parent}>
         <View style={{ marginTop: 40 }} >
@@ -27,8 +42,16 @@ export default class LoginScreen extends Component {
               style={styles.inputIcon} />
             <View style={{ width: '70%', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
               <Item floatingLabel style={{ width: '100%', alignItems: 'center' }}>
-                <Label style={styles.input} >Nomor Ponsel</Label>
-                <Input style={{ color: '#fff' }} keyboardType='phone-pad' />
+                <Label style={styles.input} 
+                >Nomor Ponsel</Label>
+                <Input style={{ color: '#fff' }} inputStyle={{ fontSize: 15 }}
+            keyboardType='phone-pad'
+            onChangeText={text => this.setState({ phone: text })}
+            onBlur={() => this.checkphone()}
+            errorStyle={{ color: 'red' }}
+            errorMessage={
+              !this.state.phoneError ? false : 'Silahkan masukan nomor ponsel anda'
+            }/>
               </Item>
               <TouchableOpacity style={styles.btnSignIn}>
                 <Text style={{ color: 'white' }}>SIGN IN</Text>

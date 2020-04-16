@@ -16,7 +16,10 @@ export default class JoinPayLive extends Component {
       error: null,
       emailError: null,
       phone: 0,
-      phoneError: null
+      phoneError: null,
+      activeBtn : true,
+      checked : false,
+      styleBtn : styles.disabledBtn
     }
     this.checkname = () => {
       let req = /^[a-zA-Z]+$/
@@ -50,7 +53,15 @@ export default class JoinPayLive extends Component {
     this.changeScreenSKKP = () => {
       this.props.navigation.navigate('SKKP')
     }
+
+    this.checkButton = () => {
+      this.setState ({
+        checked : !this.state.checked,
+        activeBtn : !this.state.activeBtn
+      })
+    }
   }
+
   render() {
     console.disableYellowBox = true
     return (
@@ -97,11 +108,18 @@ export default class JoinPayLive extends Component {
             }
           />
           <CheckBox
+            onPress = {this.checkButton}
             title='Click Here'
             checked={this.state.checked}
           />
+
+          {/* <CheckBox checked={this.state.checked} onpress= { () => { this.setState({
+            checked: !this.state.checked,
+            activeBtn: !this.state.activeBtn
+          })}}
+           /> */}
         </View>
-        <TouchableOpacity style={styles.btn} onPress={this.changeScreenSKKP}>
+        <TouchableOpacity disabled={this.state.activeBtn} style={this.state.activeBtn ? styles.disabledBtn : styles.btn} onPress={this.changeScreenSKKP}>
           <Text>Berikutnya</Text>
         </TouchableOpacity>
       </View>
@@ -132,5 +150,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center'
   },
+  disabledBtn : {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    justifyContent: 'center',
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    backgroundColor: '#CED6E0'
+  }
 
 })

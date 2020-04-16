@@ -9,6 +9,7 @@ export default class CodeOTPScreen extends Component {
     }
   }
   render() {
+    console.disableYellowBox=true
     return (
       <View>
         <View>

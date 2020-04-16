@@ -12,6 +12,7 @@ export default class SKKPScreen extends Component {
     }
   }
   render() {
+    console.disableYellowBox=true
     return (
       <ScrollView>
         <View>
