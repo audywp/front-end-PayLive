@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Login from './src/screen/LoginScreen'
-import Join from './src/screen/JoinPayLiveScreen'
-import SKKP from './src/screen/SKKPScreen'
-import SecurityCode from './src/screen/SecurityCode'
-import LupaSecurityCode from './src/screen/LupaSecurityCode'
-import CodeOTP from './src/screen/CodeOTPScreen'
-import GreetingUser from './src/screen/GreetingUser'
+import Login from './src/Screen/LoginScreen'
+import Join from './src/Screen/JoinPayLiveScreen'
+import SKKP from './src/Screen/SKKPScreen'
+import SecurityCode from './src/Screen/SecurityCode'
+import LupaSecurityCode from './src/Screen/LupaSecurityCode'
+import CodeOTP from './src/Screen/CodeOTPScreen'
+import GreetingUser from './src/Screen/GreetingUser'
+import BottomStack from './src/Screen/BottomStack'
 
 const Stack = createStackNavigator()
 
 
 
 export default class App extends Component {
-  // static navigationOptions = {
-  //     headerTintColor
-  // }
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator>
         <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />
+          <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
           <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
           <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />

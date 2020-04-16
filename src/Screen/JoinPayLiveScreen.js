@@ -50,25 +50,24 @@ export default class JoinPayLive extends Component {
         this.setState({ emailError: null })
       }
     }
-    this.changeScreenSKKP = () => {
-      this.props.navigation.navigate('SKKP')
-      this.checkData = () => {
-        if( nam)
-      }
-    }
-
     this.checkButton = () => {
       this.setState ({
         checked : !this.state.checked,
         activeBtn : !this.state.activeBtn
       })
     }
+    this.changeScreenToCodeOTP= () => {
+      this.props.navigation.navigate('CodeOTP')
+    }
+    this.changeScreenToSKKP= () => {
+      this.props.navigation.navigate('SKKP')
+    }
   }
 
   render() {
     console.disableYellowBox = true
     return (
-      <View>
+      <View style={{ paddingHorizontal: 10 }}>
         <View style={styles.container}>
           <Text style={{ fontSize: 15, textAlign: 'left' }}>
             Terimakasih telah bergabung! Kami akan mengirimkan kode melalui email untuk verifikasi proses registrasi
@@ -110,20 +109,21 @@ export default class JoinPayLive extends Component {
               !this.state.emailError ? false : 'Silahkan masukan email anda'
             }
           />
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <CheckBox
             onPress = {this.checkButton}
             // title={}
             checked={this.state.checked}
             CheckBox={{color: '48387E'}}
           />
-          <TouchableOpacity style={{marginTop: 10, paddingRight: 50}}>
-            <Text>Saya setuju dengan <Text style={styles.textSKKP}>Syarat dan Ketentuan </Text> 
-             dan Kebijakan Privasi</Text>
+
+          <TouchableOpacity onPress={this.changeScreenToSKKP}>
+            <Text style={styles.textSKKP}>Syarat dan Ketentuan</Text>
           </TouchableOpacity>
+          
           </View>
         </View>
-        <TouchableOpacity disabled={this.state.activeBtn} style={this.state.activeBtn ? styles.disabledBtn : styles.btn} onPress={this.changeScreenSKKP}>
+        <TouchableOpacity disabled={this.state.activeBtn} style={this.state.activeBtn ? styles.disabledBtn : styles.btn} onPress={this.changeScreenToCodeOTP}>
           <Text>Berikutnya</Text>
         </TouchableOpacity>
       </View>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginTop: 20,
-    marginLeft: 10
+    paddingHorizontal: 10
   },
   inputText: {
     marginBottom: 20

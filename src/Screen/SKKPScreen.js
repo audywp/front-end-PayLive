@@ -80,8 +80,8 @@ export default class SKKPScreen extends Component {
               Untuk OVO Club, maksimum saldo OVO Cash adalah Rp 2.000.000 (dua juta Rupiah) dengan batas nilai transaksi dalam 1 (satu) bulan paling banyak Rp20.000.000 (dua puluh juta Rupiah), yang diperhitungkan dari transaksi yang bersifat incoming.
               Untuk dapat memanfaatkan fitur layanan lainnya pada Aplikasi OVO, maka Anda dapat meng-upgrade akun OVO Club Anda menjadi akun OVO Premier.
             </Text>
-            <TouchableOpacity style={styles.btn} onPress={this.changeScreenToCodeOTP}>
-          <Text>Berikutnya</Text>
+            <TouchableOpacity style={styles.btn} onPress={() => this.props.navigation.goBack()}>
+          <Text>Kembali</Text>
         </TouchableOpacity>
           </View>
         </View>
