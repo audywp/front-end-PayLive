@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text as Div, ScrollView, TouchableOpacity } from 'react-native'
-import { View, Text, Container, Right } from 'native-base'
-import { Card, Button } from 'react-native-elements'
+import { View, Text, Container } from 'native-base'
+import { Card } from 'react-native-elements'
 import Feather from 'react-native-vector-icons/Feather'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import HeaderComponent from '../Components/Header'
 import NavigationComponent from '../Components/Navigation'
+import CardPromo from '../Components/CardPromo'
 import { style } from '../Utils/style'
-
+import HeaderProme from '../Components/HeaderProme'
 class Home extends Component {
   constructor (props) {
     super(props)
@@ -23,7 +24,22 @@ class Home extends Component {
           <View style={style.wrapper}>
             <Text> text </Text>
           </View>
-          <HeaderComponent />
+          <View style={{ backgroundColor: '#4a2d8b', height: 200, borderRadius: 70 }}>
+            <HeaderComponent title='PayLive' />
+            <View>
+              <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
+                <Text style={{ marginBottom: 9, fontSize: 18, fontFamily: 'Caladea-Regular', color: '#fff' }}>PayLive Cash</Text>
+                <View style={{ marginBottom: 7, flexDirection: 'row', color: '#fff' }}>
+                  <Text style={{ fontFamily: 'Caladea-Regular', fontSize: 22, marginRight: 10, color: '#fff' }}>Rp</Text>
+                  <Text style={{ fontFamily: 'Caladea-Regular', fontSize: 40, marginRight: 10, color: '#fff' }}>150.000</Text>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                  <Text style={{ marginRight: 10, fontSize: 18, fontFamily: 'Caladea-Regular', color: '#fff' }}>PayLive Points</Text>
+                  <Text style={{ fontSize: 18, fontFamily: 'Caladea-Regular', color: '#F7C738' }}>2.847</Text>
+                </View>
+              </View>
+            </View>
+          </View>
           <View style={{ paddingHorizontal: 20 }}>
             <View style={style.navCard}>
               <View>
@@ -61,7 +77,7 @@ class Home extends Component {
           <View style={home.descPayLive}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Kenali PayLive Lebih Dekat</Text>
-              <Text style= {{ fontSize: 18, color: '#555' }}>Biar makin akrab, yuk cek tips berikut</Text>
+              <Text style={{ fontSize: 18, color: '#555' }}>Biar makin akrab, yuk cek tips berikut</Text>
             </View>
             <View>
               <TouchableOpacity>
@@ -70,83 +86,76 @@ class Home extends Component {
             </View>
           </View>
 
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal>
             <Card
               containerStyle={{ borderRadius: 20, width: 200 }}
               title='Keuntungan Pakai PayLive'
-              image={require('../Assets/Images/pay3.png')}>
+              image={require('../Assets/Images/pay3.png')}
+            >
               <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
             </Card>
             <Card
               containerStyle={{ borderRadius: 20, width: 200 }}
               title='Cara topup PayLive Cash'
-              image={require('../Assets/Images/pay1.png')}>
+              image={require('../Assets/Images/pay1.png')}
+            >
               <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
             </Card>
             <Card
               containerStyle={{ borderRadius: 20, width: 200 }}
               title='Upgrade PayLive Premium'
-              image={require('../Assets/Images/pay4.png')}>
+              image={require('../Assets/Images/pay4.png')}
+            >
               <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
             </Card>
             <Card
               containerStyle={{ borderRadius: 20, width: 200 }}
               title='Cara bayar Pakai PayLive'
-              image={require('../Assets/Images/pay2.png')}>
+              image={require('../Assets/Images/pay2.png')}
+            >
               <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
             </Card>
             <Card
               containerStyle={{ borderRadius: 20, width: 200 }}
               title='Cara transfer Pakai PayLive'
-              image={require('../Assets/Images/pay5.png')}>
+              image={require('../Assets/Images/pay5.png')}
+            >
               <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
             </Card>
           </ScrollView>
         </View>
-
-        <View style={{ padding: 20, backgroundColor: 'white',}}>
-          <View style={home.descPayLive}>
-            <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Info Promo Spesial</Text>
-            </View>
-            <View>
-              <TouchableOpacity>
-                <Text style={{ color: '#35b6f2' }}>Lihat semua</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <ScrollView horizontal={true}>
-            <Card
-              containerStyle={{ borderRadius: 20, width: 250 }}
-              title='Keuntungan Pakai PayLive'
-              image={require('../Assets/Images/promo1.jpg')}>
-              <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
-            </Card>
-            <Card
-              containerStyle={{ borderRadius: 20, width: 250 }}
-              title='Cara topup PayLive Cash'
-              image={require('../Assets/Images/promo2.jpg')}>
-              <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
-            </Card>
-            <Card
-              containerStyle={{ borderRadius: 20, width: 250 }}
-              title='Upgrade PayLive Premium'
-              image={require('../Assets/Images/promo3.jpg')}>
-              <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
-            </Card>
-            <Card
-              containerStyle={{ borderRadius: 20, width: 250 }}
-              title='Cara bayar Pakai PayLive'
-              image={require('../Assets/Images/promo4.jpeg')}>
-              <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
-            </Card>
-            <Card
-              containerStyle={{ borderRadius: 20, width: 250 }}
-              title='Cara transfer Pakai PayLive'
-              image={require('../Assets/Images/promo5.jpg')}>
-              <MaterialIcons style={{ textAlign: 'right' }} name='favorite' color='#9c49eb' size={20} />
-            </Card>
+        <View style={{ backgroundColor: 'white' }}>
+          <HeaderProme
+            title='Cashback lagi dan lagi'
+            desc='Serbu berbagai promo terbaru PayLive'
+            link='Lihat Semua'
+          />
+          <ScrollView horizontal>
+            <CardPromo
+              title='Cashback lagi dan lagi'
+              desc='Serbu berbagai promo terbaru OVO'
+              img={require('../Assets/Images/promo1.jpg')}
+            />
+            <CardPromo
+              title='Cashback lagi dan lagi'
+              desc='Serbu berbagai promo terbaru OVO'
+              img={require('../Assets/Images/promo2.jpg')}
+            />
+            <CardPromo
+              title='Cashback lagi dan lagi'
+              desc='Serbu berbagai promo terbaru OVO'
+              img={require('../Assets/Images/promo3.jpg')}
+            />
+            <CardPromo
+              title='Cashback lagi dan lagi'
+              desc='Serbu berbagai promo terbaru OVO'
+              img={require('../Assets/Images/promo4.jpeg')}
+            />
+            <CardPromo
+              title='Cashback lagi dan lagi'
+              desc='Serbu berbagai promo terbaru OVO'
+              img={require('../Assets/Images/promo5.jpg')}
+            />
           </ScrollView>
         </View>
       </ScrollView>
@@ -155,7 +164,6 @@ class Home extends Component {
 }
 
 export default Home
-
 const home = StyleSheet.create({
   descPayLive: {
     flexDirection: 'row',
