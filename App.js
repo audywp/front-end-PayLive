@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import BottomStack from './src/Screens/BottomStack'
+import { createStackNavigator } from '@react-navigation/stack'
+import TopUp from './src/Screens/TopUp'
+const Stack = createStackNavigator()
 
 class App extends Component {
   constructor (props) {
@@ -12,7 +15,8 @@ class App extends Component {
     return (
       <>
         <NavigationContainer>
-          <BottomStack />
+          <Stack.Screen name='Home' component={BottomStack} />
+          {/* <Stack.Screen name='Top Up' component={TopUp} /> */}
         </NavigationContainer>
       </>
     )

@@ -42,16 +42,16 @@ class Home extends Component {
           </View>
           <View style={{ paddingHorizontal: 20 }}>
             <View style={style.navCard}>
-              <View>
-                <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={40} />
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={30} />
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>Top Up</Text>
               </View>
-              <View style={{}}>
-                <Feather name='upload' color='#4a2d8b' size={40} />
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Feather name='upload' color='#4a2d8b' size={30} />
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>Transfer</Text>
               </View>
-              <View style={{}}>
-                <MaterialIcons name='history' color='#4a2d8b' size={40} />
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <MaterialIcons name='history' color='#4a2d8b' size={30} />
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>History</Text>
               </View>
             </View>

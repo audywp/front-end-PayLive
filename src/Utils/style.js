@@ -5,7 +5,7 @@ export const style = StyleSheet.create({
   navCard: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    height: 78,
+    height: 68,
     alignItems: 'center',
     backgroundColor: '#fff',
     shadowColor: '#666',
@@ -24,7 +24,7 @@ export const style = StyleSheet.create({
     height: 550,
     width: 550,
     borderRadius: 550,
-    top: -275,
+    top: -285,
     left: -95
   },
   Kios: {
