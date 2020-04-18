@@ -96,6 +96,7 @@ class JoinPayLive extends Component {
       console.log(this.props.register.isLoading)
     }
   }
+
   componentDidMount () {
     this.props.setRegister()
   }

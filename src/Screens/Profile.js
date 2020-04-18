@@ -7,6 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   profilePicture: {
@@ -102,7 +103,9 @@ class Profile extends Component {
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
               <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <Text>Ubah Profile</Text>
+              <TouchableOpacity onPress={this.props.navigation.navigate('Edit Profile')}>
+                <Text>Ubah Profile</Text>
+              </TouchableOpacity>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
