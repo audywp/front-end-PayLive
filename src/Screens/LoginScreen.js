@@ -28,12 +28,12 @@ class LoginScreen extends Component {
       }
     }
     this.navigateToHome = () => {
-      const data ={
+      const data = {
         phone: this.state.phone
       }
       this.props.setLogin(data)
       if (this.props.login.isLoading === false) {
-        
+
       }
     }
   }

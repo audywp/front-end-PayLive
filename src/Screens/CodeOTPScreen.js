@@ -11,7 +11,6 @@ class CodeOTPScreen extends Component {
     }
 
     this.handleVerify = () => {
-
       this.props.setVerify(this.state.code)
       if (this.props.verify.data.success === true) {
         Alert.alert('Selamat anda telah terdaftar, silahkan buat Security code anda')

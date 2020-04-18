@@ -105,8 +105,14 @@ class JoinPayLive extends Component {
       console.log(this.props.register.isLoading);
     };
   }
+<<<<<<< HEAD
   componentDidMount() {
     this.props.setRegister();
+=======
+
+  componentDidMount () {
+    this.props.setRegister()
+>>>>>>> refs/remotes/origin/dev
   }
 
   render() {

@@ -10,6 +10,9 @@ import CodeOTP from './src/Screens/CodeOTPScreen';
 import GreetingUser from './src/Screens/GreetingUser';
 import BottomStack from './src/Screens/BottomStack';
 import TopUp from './src/Screens/TopUp';
+import CategoryPulsa from './src/Screens/CategoryPulsa';
+import EditProfile from './src/Screens/EditProfile';
+
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/Redux/Store';
@@ -82,7 +85,29 @@ export default class App extends Component {
                   headerTintColor: '#5f27cd',
                 }}
               />
-              <Stack.Screen name="Top Up" component={TopUp} />
+              <Stack.Screen
+                name="Top Up"
+                component={TopUp}
+                options={{
+                  title: 'TOP UP',
+                  headerShown: true,
+                  headerTintColor: '#5f27cd',
+                }}
+              />
+              <Stack.Screen
+                name="Category Pulsa"
+                component={CategoryPulsa}
+                options={{
+                  title: 'Pulsa',
+                  headerShown: true,
+                  headerTintColor: '#5f27cd',
+                }}
+              />
+              <Stack.Screen
+                name="Edit Profile"
+                component={EditProfile}
+                options={{headerShown: true, headerTintColor: '#5f27cd'}}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </PersistGate>

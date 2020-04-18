@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text as Div, ScrollView, TouchableOpacity } from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import Entypo from 'react-native-vector-icons/Entypo'
 import { View, Text, Container } from 'native-base'
 import { Card } from 'react-native-elements'
 import Feather from 'react-native-vector-icons/Feather'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import HeaderComponent from '../Components/Header'
 import NavigationComponent from '../Components/Navigation'
@@ -57,7 +60,7 @@ class Home extends Component {
             </View>
           </View>
           <View style={{ paddingHorizontal: 20 }}>
-            <View style={style.Kios}>
+            <View style={styles.Kios}>
               <View>
                 <EvilIcons name='clock' size={30} color='#F7C738' />
               </View>
@@ -70,7 +73,46 @@ class Home extends Component {
               </View>
             </View>
           </View>
-          <NavigationComponent />
+          <View style={styles.Body}>
+            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <FontAwesome5 style={style.IconNav} name='lightbulb' size={30} color='#F7C738' />
+                <Text>PLN</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <MaterialIcons style={styles.IconNav} name='phone-android' size={30} color='blue' />
+                </TouchableOpacity>
+                <Text>Pulsa</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <Ionicons style={styles.IconNav} name='ios-globe' size={30} color='green' />
+                <Text>Paket Data</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <FontAwesome5 style={styles.IconNav} name='money-check-alt' size={30} color='lightblue' />
+                <Text>Pasca Bayar</Text>
+              </View>
+            </View>
+            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <FontAwesome5 style={styles.IconNav} name='shield-alt' size={30} color='#77c969' />
+                <Text>BPJS</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <Feather style={styles.IconNav} name='tv' size={30} color='#e05514' />
+                <Text>TV Kabel</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
+                <Text>PLN</Text>
+              </View>
+              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+                <Entypo style={styles.IconNav} name='dots-three-horizontal' size={30} color='#4b088a' />
+                <Text>Lainnya</Text>
+              </View>
+            </View>
+          </View>
 
         </Container>
         <View style={{ padding: 20, backgroundColor: 'white', marginTop: -40 }}>
@@ -168,5 +210,30 @@ const home = StyleSheet.create({
   descPayLive: {
     flexDirection: 'row',
     justifyContent: 'flex-end'
+  }
+})
+
+const styles = StyleSheet.create({
+  IconNav: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 50,
+    backgroundColor: 'rgba(168, 168, 168, 0.02)',
+    textAlign: 'center'
+  },
+  Body: {
+    marginTop: 20,
+    padding: 20,
+    height: 200,
+    borderRadius: 20,
+    justifyContent: 'space-between',
+    shadowOffset: {
+      width: 0,
+      height: 12
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.00,
+    backgroundColor: 'white',
+    elevation: 5
   }
 })

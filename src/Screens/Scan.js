@@ -24,7 +24,7 @@ class Scan extends Component {
         onRead={this.handleSuccess}
         cameraStyle={{ marginTop: -50 }}
         bottomContent={
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home') } style={styles.buttonTouchable}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={styles.buttonTouchable}>
             <Text style={styles.buttonText}>OK. Got it!</Text>
           </TouchableOpacity>
         }
