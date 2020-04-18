@@ -105,10 +105,6 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-<<<<<<< HEAD
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <TouchableOpacity onPress={() => { this.props.navigation.navigate('Edit Profile') }}>
-=======
               <FontAwesome5
                 color='#4a2d8b'
                 style={{ marginRight: 15 }}
@@ -119,7 +115,6 @@ class Profile extends Component {
               <TouchableOpacity
                 onPress={this.props.navigation.navigate('Edit Profile')}
               >
->>>>>>> ca8c646cb1e426b30be6bf6fdae7a74c09b542d7
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>
