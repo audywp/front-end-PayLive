@@ -70,35 +70,36 @@ class JoinPayLive extends Component {
         phone: this.state.phone,
         email: this.state.email
       }
+      console.log(this.state.phone)
       this.props.setRegister(data)
-      if (this.props.register.data.success) {
-        this.props.navigation.navigate('CodeOTP')
+      setTimeout(() => {
+        if (this.props.register.data.success) {
+          this.props.navigation.navigate('CodeOTP')
+          this.setState({
+            modalVisible: !this.state.modalVisible,
+            phone: this.state.phone = 0
+          })
+          console.log('ok')
+        } else {
+          console.log(this.props.register)
+          Alert.alert(this.props.register.data.msg)
+        }
         this.setState({
-          modalVisible: !this.state.modalVisible,
-          phone: this.state.phone = 0
+          content: this.state.content = <Spinner color='white' />
         })
-      } else {
-        console.log(this.props.register)
-        Alert.alert(this.props.register.data.msg)
-      }
-      // if (this.props.register.isLoading === false) {
-      //   this.setState({
-      //     isLoading: !this.state.isLoading,
-      //     content: this.state.content = <Spinner color='white' />
-      //   })
-      // } else {
-      //   this.setState({
-      //     isLoading: !this.state.isLoading,
-      //     content: this.state.content = <Text>Berikutnya</Text>,
-      //   })
-      // }
-      console.log(this.props.register)
-      console.log(this.props.register.isLoading)
+      }, 1)
     }
   }
-  componentDidMount () {
-    this.props.setRegister()
-  }
+
+  // async componentDidMount () {
+  //   await this.props.setRegister()
+  // }
+
+  // componentDidUpdate () {
+  //   if (this.props.register.data.length < 1) {
+  //     this.props.setRegister()
+  //   }
+  // }
 
   render () {
     console.disableYellowBox = true

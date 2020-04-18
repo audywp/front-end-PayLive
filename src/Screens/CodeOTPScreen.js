@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Spinner } from 'native-base'
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
 import { connect } from 'react-redux'
@@ -11,20 +12,20 @@ class CodeOTPScreen extends Component {
     }
 
     this.handleVerify = () => {
-
       this.props.setVerify(this.state.code)
-      if (this.props.verify.data.success === true) {
-        Alert.alert('Selamat anda telah terdaftar, silahkan buat Security code anda')
-      } else {
-        Alert.alert('Anda yakin itu kode yang kami berikan ?')
-        this.props.navigation.navigate('CodeOTP')
-      }
-      console.log(this.props)
+      setTimeout(() => {
+        if (this.props.verify.data.success === true) {
+          Alert.alert('Selamat anda telah terdaftar, silahkan buat Security code anda')
+          this.props.navigation.navigate('Buat Code')
+        } else {
+          Alert.alert('Anda yakin itu kode yang kami berikan ?')
+          this.props.navigation.navigate('CodeOTP')
+        }
+        this.setState({
+          content: this.state.content = <Spinner color='white' />
+        })
+      }, 1)
     }
-  }
-
-  componentDidMount () {
-    this.props.setVerify()
   }
 
   render () {

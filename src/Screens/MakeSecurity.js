@@ -9,12 +9,12 @@ export default class SecurityCode extends Component {
       this.props.navigation.navigate('Lupa Security Code')
     }
     this.changeScreenToLogin = () => {
-      this.props.navigation.navigate('Home')
+      this.props.navigation.navigate('Login')
     }
   }
 
   render () {
-    console.disableYellowBox = true
+    console.disableYellowBox=true
     return (
       <View>
         <View>
@@ -33,7 +33,7 @@ export default class SecurityCode extends Component {
           <Text style={{fontSize: 15, fontWeight:'bold', color: '#00d2d3', textAlign:'center', marginTop: 50}}>KIRIM</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.changeScreenToLupaSecurityCode}>
-          <Text style={{fontSize: 15, fontWeight:'bold', color: '#00d2d3', textAlign:'center', marginTop: 50}}>LUPA SECURITY CODE?</Text>
+          <Text style={{fontSize: 15, fontWeight:'bold', color: '#00d2d3', textAlign:'center', marginTop: 50}}>Kirim lagi ?</Text>
         </TouchableOpacity>
       </View>
     )

@@ -1,23 +1,26 @@
 const intialState = {
   data: {},
-  isLoading: false
+  isLoading: false,
+  pending: true
 }
-
-export default function Register (state = intialState, action) {
-  switch (action.type) {
+console.log(intialState.pending)
+export default function Register (state = intialState, { type, payload }) {
+  switch (type) {
     case 'IS_REGISTER':
       return {
         ...state,
         isLoading: true,
-        data: action.payload
+        pending: false,
+        data: payload
       }
     case 'FAILED_REGISTER':
       return {
         ...state,
         isLoading: true,
-        data: action.payload
+        pengin: false,
+        data: payload
       }
     default:
-      return state
+      return { ...state }
   }
 }

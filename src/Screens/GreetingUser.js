@@ -8,7 +8,7 @@ export default class GreetingUser extends Component {
   constructor (props) {
     super(props)
     this.changeScreenToLogin = () => {
-      this.props.navigation.navigate('Join PayLive')
+      this.props.navigation.navigate('Login')
     }
   }
 
