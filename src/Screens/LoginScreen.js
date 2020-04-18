@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import { Form, Item, Input, Label } from 'native-base'
 import IconUser from 'react-native-vector-icons/EvilIcons'
+import { setLogin } from '../Redux/Actions/Auth/Login'
+import { connect } from 'react-redux'
 
 const { width: WIDTH } = Dimensions.get('window')
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
       phone: 0,
-      phoneError: null
+      phoneError: null,
+      isLoading: false
     }
     this.changeScreenToJoin = () => {
       this.props.navigation.navigate('Join PayLive')
@@ -25,7 +28,13 @@ export default class LoginScreen extends Component {
       }
     }
     this.navigateToHome = () => {
-      this.props.navigation.navigate('Home')
+      const data ={
+        phone: this.state.phone
+      }
+      this.props.setLogin(data)
+      if (this.props.login.isLoading === false) {
+        
+      }
     }
   }
 
@@ -76,6 +85,13 @@ export default class LoginScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    login: state.Login
+  }
+}
+export default connect(mapStateToProps, { setLogin })(LoginScreen)
 
 const styles = StyleSheet.create({
   parent: {

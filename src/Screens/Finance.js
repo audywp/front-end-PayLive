@@ -9,8 +9,6 @@ import {
   Image
 } from 'react-native'
 import HeaderComponent from '../Components/Header'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Button } from 'native-base'
 
 const Finance = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F194FF',
     borderRadius: 20,
     padding: 10,
-    elevation: 2,
+    elevation: 2
   },
   textStyle: {
     color: 'white',

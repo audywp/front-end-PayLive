@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {View,Text, Stylesheet, } from 'react-native'
+import { View, Text } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 
-
 export default class SecurityCode extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.changeScreenToLupaSecurityCode = () => {
       this.props.navigation.navigate('Lupa Security Code')
@@ -13,7 +12,8 @@ export default class SecurityCode extends Component {
       this.props.navigation.navigate('Login')
     }
   }
-  render() {
+
+  render () {
     console.disableYellowBox=true
     return (
       <View>
@@ -22,13 +22,12 @@ export default class SecurityCode extends Component {
             Masukan Security Code Anda
           </Text>
         </View>
-        <View >
+        <View>
           <TextInput
-          style={{alignSelf: 'center', fontSize: 40}}
-          keyboardType='phone-pad'
-          placeholder='_ _ _ _ _ _'
-          >
-          </TextInput>
+            style={{alignSelf: 'center', fontSize: 40}}
+            keyboardType='phone-pad'
+            placeholder='_ _ _ _ _ _'
+          />
         </View>
         <TouchableOpacity onPress={this.changeScreenToLogin}>
           <Text style={{fontSize: 15, fontWeight:'bold', color: '#00d2d3', textAlign:'center', marginTop: 50}}>KIRIM</Text>
