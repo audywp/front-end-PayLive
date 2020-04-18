@@ -7,6 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   profilePicture: {
@@ -81,7 +82,10 @@ class Profile extends Component {
           </View>
           <View style={styles.Kios}>
             <Text> PayLive Club </Text>
-            <Text> Lihat Kios PayLive <AntDesign name='right' /> </Text>
+            <Text>
+              {' '}
+              Lihat Kios PayLive <AntDesign name='right' />{' '}
+            </Text>
           </View>
         </View>
         <View style={styles.Main}>
@@ -101,21 +105,48 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
+<<<<<<< HEAD
               <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <Text>Ubah Profile</Text>
+              <TouchableOpacity onPress={() => { this.props.navigation.navigate('Edit Profile') }}>
+=======
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='user-edit'
+                size={16}
+              />
+              <TouchableOpacity
+                onPress={this.props.navigation.navigate('Edit Profile')}
+              >
+>>>>>>> ca8c646cb1e426b30be6bf6fdae7a74c09b542d7
+                <Text>Ubah Profile</Text>
+              </TouchableOpacity>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='credit-card' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='credit-card'
+                size={16}
+              />
               <Text>My Cards</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <MaterialCommunityIcons color='#4a2d8b' style={{ marginRight: 15 }} active name='ticket-percent' size={20} />
+              <MaterialCommunityIcons
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='ticket-percent'
+                size={20}
+              />
               <Text>Kode Promo</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -127,7 +158,13 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-              <Fontisto color='#4a2d8b' style={{ marginRight: 15 }} active name='locked' size={16} />
+              <Fontisto
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='locked'
+                size={16}
+              />
               <Text>Keamanan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -139,35 +176,65 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Tentang</Text>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='medal' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='medal'
+                size={16}
+              />
               <Text>Keuntungan pakai PayLive</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='lightbulb' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='lightbulb'
+                size={16}
+              />
               <Text>Panduan PayLive</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='list-alt' size={20} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='list-alt'
+                size={20}
+              />
               <Text>Syarat dan Ketentuan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <MaterialCommunityIcons color='#4a2d8b' style={{ marginRight: 15 }} active name='shield-check' size={20} />
+              <MaterialCommunityIcons
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='shield-check'
+                size={20}
+              />
               <Text>Kebijakan dan Privasi</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <Entypo color='#4a2d8b' style={{ marginRight: 15 }} active name='help-with-circle' size={20} />
+              <Entypo
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='help-with-circle'
+                size={20}
+              />
               <Text>Pusat Bantuan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -175,7 +242,13 @@ class Profile extends Component {
             </View>
           </View>
         </View>
-        <View style={{ paddingHorizontal: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+        <View
+          style={{
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+            flexDirection: 'row'
+          }}
+        >
           <Text>Version 3.6.0 (300)</Text>
           <Text>#PakePayLiveaja</Text>
         </View>
@@ -184,7 +257,12 @@ class Profile extends Component {
             title='Sign Out'
             titleStyle={{ fontWeight: 'bold' }}
             containerStyle={{ marginVertical: 15, alignItems: 'center' }}
-            buttonStyle={{ width: 300, borderRadius: 20, backgroundColor: '#4a2d8b', height: 50 }}
+            buttonStyle={{
+              width: 300,
+              borderRadius: 20,
+              backgroundColor: '#4a2d8b',
+              height: 50
+            }}
           />
         </View>
       </ScrollView>

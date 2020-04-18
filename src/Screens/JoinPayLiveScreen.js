@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Dimensions, ScrollView, Modal, Alert, Image } from 'react-native'
-import { Spinner, Toast } from 'native-base'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  Modal,
+  Alert,
+  Image
+} from 'react-native'
+import { Spinner } from 'native-base'
 import { Input, CheckBox } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
@@ -85,7 +94,9 @@ class JoinPayLive extends Component {
           Alert.alert(this.props.register.data.msg)
         }
         this.setState({
-          content: this.state.content = <Spinner color='white' />
+          content: this.state.content = <Spinner color='white' />,
+          modalVisible: !this.state.modalVisible,
+          phone: (this.state.phone = 0)
         })
       }, 1)
     }
@@ -107,7 +118,8 @@ class JoinPayLive extends Component {
       <ScrollView style={{ paddingHorizontal: 10 }}>
         <View style={styles.container}>
           <Text style={{ fontSize: 15, textAlign: 'left' }}>
-            Terimakasih telah bergabung! Kami akan mengirimkan kode melalui email untuk verifikasi proses registrasi
+            Terimakasih telah bergabung! Kami akan mengirimkan kode melalui
+            email untuk verifikasi proses registrasi
           </Text>
         </View>
         <View style={styles.inputContainer}>
@@ -133,7 +145,9 @@ class JoinPayLive extends Component {
             onBlur={() => this.checkphone()}
             errorStyle={{ color: 'red' }}
             errorMessage={
-              !this.state.phoneError ? false : 'Silahkan masukan nomor ponsel anda'
+              !this.state.phoneError
+                ? false
+                : 'Silahkan masukan nomor ponsel anda'
             }
           />
           <Input
@@ -162,7 +176,11 @@ class JoinPayLive extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity onPress={this.handleRegister} disabled={this.state.activeBtn} style={this.state.activeBtn ? styles.disabledBtn : styles.btn}>
+        <TouchableOpacity
+          onPress={this.handleRegister}
+          disabled={this.state.activeBtn}
+          style={this.state.activeBtn ? styles.disabledBtn : styles.btn}
+        >
           {this.state.content}
         </TouchableOpacity>
         <View style={styles.centeredView}>
@@ -181,8 +199,14 @@ class JoinPayLive extends Component {
                   resizeMode='cover'
                   style={{ width: 300, height: 200, marginBottom: 20 }}
                 />
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}> Kode verifikasi mu sudah di kirim. </Text>
-                <Text style={{ fontSize: 18, marginBottom: 20 }}> lewat email </Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                  {' '}
+                  Kode verifikasi mu sudah di kirim.{' '}
+                </Text>
+                <Text style={{ fontSize: 18, marginBottom: 20 }}>
+                  {' '}
+                  lewat email{' '}
+                </Text>
                 <TouchableOpacity style={styles.textStyle}>
                   <Text
                     onPress={() => {
@@ -191,8 +215,16 @@ class JoinPayLive extends Component {
                       })
                       this.props.navigation.navigate('CodeOTP')
                     }}
-                    style={{ paddingVertical: 20, paddingHorizontal: 15, backgroundColor: '#00d2d3', color: '#4a2d8b', borderRadius: 10 }}
-                  > Verifikasi Code yuk.
+                    style={{
+                      paddingVertical: 20,
+                      paddingHorizontal: 15,
+                      backgroundColor: '#00d2d3',
+                      color: '#4a2d8b',
+                      borderRadius: 10
+                    }}
+                  >
+                    {' '}
+                    Verifikasi Code yuk.
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -208,7 +240,10 @@ const mapStateToProps = state => {
     register: state.Register
   }
 }
-export default connect(mapStateToProps, { setRegister })(JoinPayLive)
+export default connect(
+  mapStateToProps,
+  { setRegister }
+)(JoinPayLive)
 
 const styles = StyleSheet.create({
   container: {
@@ -270,5 +305,4 @@ const styles = StyleSheet.create({
     color: '#1e90ff',
     fontWeight: 'bold'
   }
-
 })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Alert } from 'react-native'
-import { Form, Item, Input, Label, Spinner, Toast } from 'native-base'
+import { Form, Item, Input, Label, Spinner } from 'native-base'
 import IconUser from 'react-native-vector-icons/EvilIcons'
 import { setLogin } from '../Redux/Actions/Auth/Login'
 import { connect } from 'react-redux'
