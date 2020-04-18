@@ -10,10 +10,10 @@ import Feather from 'react-native-vector-icons/Feather'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import HeaderComponent from '../Components/Header'
-import NavigationComponent from '../Components/Navigation'
 import CardPromo from '../Components/CardPromo'
 import { style } from '../Utils/style'
 import HeaderProme from '../Components/HeaderProme'
+
 class Home extends Component {
   constructor (props) {
     super(props)
@@ -46,7 +46,7 @@ class Home extends Component {
           <View style={{ paddingHorizontal: 20 }}>
             <View style={style.navCard}>
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <TouchableOpacity onPress = {() => this.props.navigation.navigate('Top Up')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Top Up')}>
                   <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={30} />
                 </TouchableOpacity>
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>Top Up</Text>
