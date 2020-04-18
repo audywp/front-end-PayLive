@@ -12,6 +12,7 @@ import BottomStack from './src/Screens/BottomStack'
 import TopUp from './src/Screens/TopUp'
 import CategoryPulsa from './src/Screens/CategoryPulsa'
 import EditProfile from './src/Screens/EditProfile'
+import UbahEmail from './src/Screens/UbahEmail'
 
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -36,7 +37,7 @@ export default class App extends Component {
               <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
-
+              <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
             </Stack.Navigator>
           </NavigationContainer>
         </PersistGate>

@@ -103,7 +103,7 @@ class Profile extends Component {
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
               <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <TouchableOpacity onPress={this.props.navigation.navigate('Edit Profile')}>
+              <TouchableOpacity onPress={() => { this.props.navigation.navigate('Edit Profile') }}>
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>

@@ -46,8 +46,11 @@ class Home extends Component {
           <View style={{ paddingHorizontal: 20 }}>
             <View style={style.navCard}>
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={30} />
+                <TouchableOpacity onPress = {() => this.props.navigation.navigate('Top Up')}>
+                  <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={30} />
+                </TouchableOpacity>
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>Top Up</Text>
+
               </View>
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Feather name='upload' color='#4a2d8b' size={30} />
