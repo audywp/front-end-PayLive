@@ -43,6 +43,7 @@ class LoginScreen extends Component {
         this.setState({
           content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
         })
+        this.props.navigation.navigate('Security Code', this.props.login.data)
       }
     }
   }

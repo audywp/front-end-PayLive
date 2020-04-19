@@ -237,7 +237,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   Body: {
-    display: 'none',
     marginVertical: 10,
     paddingHorizontal: 20,
     height: 220,

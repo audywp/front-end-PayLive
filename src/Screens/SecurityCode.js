@@ -30,7 +30,6 @@ export default connect(mapStateToProps, { SecurityCheck })(class SecurityCode ex
         this.setState({
           content: this.state.content = <Spinner color='#00d2d3' />
         })
-        console.log('test')
       }
       if (this.props.confirm.isLoading === true) {
         this.setState({

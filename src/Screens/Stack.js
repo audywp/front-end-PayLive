@@ -35,12 +35,11 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
   render () {
     return (
       <Stack.Navigator>
-        {this.props.check.isLogged
+        {this.props.check.isLogged === true
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
-        {this.props.login.isLogged
-        ?<Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
-        :<Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />}
+         <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Buat Code' component={MakeSecurity} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
