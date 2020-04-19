@@ -2,30 +2,46 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import { Card } from 'native-base'
 import { topUp } from '../Redux/Actions/TopUp'
+import { getUser } from '../Redux/Actions/ActionsUser'
 import { connect } from 'react-redux'
+import AsyncStorage from '@react-native-community/async-storage'
 
 class TopUp extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      cash: ''
+      balance: '',
+      idUser: ''
     }
     this.onSubmit = async e => {
       e.preventDefault()
+      const idUser = this.state.idUser
       const data = {
-        cash: this.state.cash
+        balance: this.state.balance
       }
-      this.props.topUp(data)
+      await this.props.topUp(idUser, data)
+      await this.props.getUser(idUser)
+      await this.props.navigation.navigate('Home')
     }
   }
 
-  handleonChangeInputCash = (e) => {
-    this.setState({
-      cash: e.currentTarget.value
-    })
+  componentDidMount () {
+    this.getId()
+  }
+  
+  async getId () {
+    try {
+      const setIdUser = await AsyncStorage.getItem('id_user')
+      this.setState({
+        idUser: setIdUser // 26
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render () {
+    const { usersdetails } = this.props.profile
     return (
       <View>
         <View style={{ height: '40%' }}>
@@ -35,7 +51,7 @@ class TopUp extends Component {
             </Text>
             <Card style={{ borderRadius: 20, height: '70%' }}>
               <Text style={{ marginTop: 10, paddingLeft: 10 }}>PayLive</Text>
-              <Text style={{ marginTop: 10, paddingLeft: 10 }}>Saldo Rp 50000</Text>
+    <Text style={{ marginTop: 10, paddingLeft: 10 }}>Saldo Rp {usersdetails && usersdetails.cash}</Text>
             </Card>
           </Card>
         </View>
@@ -60,7 +76,7 @@ class TopUp extends Component {
               placeholder='Minimal Rp 10.000'
               keyboardType= 'phone-pad'
               style={styles.input}
-              onChangeText={(text) => this.setState({cash: text})}
+              onChangeText={(text) => this.setState({balance: text})}
             />
             <TouchableOpacity style={styles.btnJoinNow} onPress={this.onSubmit}>
               <Text style={{ color: 'white' }}>Top Up Sekarang</Text>
@@ -93,8 +109,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    topUp: state.TopUp
+    // topUp: state.TopUp,
+    profile: state.UserDetails
   }
 }
 
-export default connect(mapStateToProps, { topUp })(TopUp)
+export default connect(mapStateToProps, { topUp, getUser })(TopUp)

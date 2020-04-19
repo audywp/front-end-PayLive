@@ -16,12 +16,14 @@ import UbahEmail from './UbahEmail'
 import ConfirmSecurity from './ConfirmSecurityCode'
 import { connect } from 'react-redux'
 
+
 // redux state
 import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
 import { setLogin } from '../Redux/Actions/Auth/Login'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
-import { AsyncStorage } from 'react-native'
+// import { AsyncStorage } from 'react-native'
 import { REGISTER } from 'redux-persist'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const Stack = createStackNavigator()
 const mapStateToProps = state => {
@@ -32,6 +34,28 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps, { SecurityCheck, setVerify })(class StackScreen extends Component {
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //     token: ''
+  //   }
+  // }
+
+  // componentDidMount () {
+  //   this.getToken()
+  // }
+
+  // async getToken () {
+  //   try {
+  //     const token = await AsyncStorage.getItem('token')
+  //     this.setState({
+  //       token: token
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   render () {
     return (
       <Stack.Navigator>

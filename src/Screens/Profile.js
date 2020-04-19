@@ -12,6 +12,8 @@ import { getUser } from '../Redux/Actions/ActionsUser'
 import { connect } from 'react-redux'
 import { isLogout } from '../Redux/Actions/Auth/Login'
 import { isLogout as logout } from '../Redux/Actions/Auth/SecurityCheck'
+
+
 const styles = StyleSheet.create({
   profilePicture: {
     marginTop: 20,
@@ -55,6 +57,7 @@ class Profile extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      idUser: '',
       fullname: '',
       email: '',
       profile_picture: '',
@@ -65,16 +68,10 @@ class Profile extends Component {
       this.props.navigation.navigate('Edit Profile')
     }
     this.handleLogout = () => {
-      AsyncStorage.removeItem('token')
+      AsyncStorage.clear()
       console.log(AsyncStorage.getItem('token'))
       this.props.navigation.navigate('Login')
     }
-  }
-
-  componentDidMount () {
-    this.props.getUser()
-    this.props.isLogout()
-    this.props.logout()
   }
 
   render () {
