@@ -66,13 +66,12 @@ class Profile extends Component {
     this.handleLogout = () => {
       AsyncStorage.removeItem('token')
       console.log(AsyncStorage.getItem('token'))
+      this.props.navigation.navigate('Login')
     }
   }
 
   componentDidMount () {
-    this.props.getUser(status => {
-      console.log(status, 'asdsaasd')
-    })
+    this.props.getUser()
   }
 
   render () {

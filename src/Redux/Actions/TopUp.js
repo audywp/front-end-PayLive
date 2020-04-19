@@ -7,7 +7,7 @@ export const topUp = (data) => async dispatch => {
     const res = await axios.patch(config.APP_BACKEND.concat('/user/topup/10', data))
     if (res.data.success) {
       dispatch({
-        type: 'TOP_UP',
+        type: 'UPDATE_TOP_UP',
         payload: res.data
       })
     } else {

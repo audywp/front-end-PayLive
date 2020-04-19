@@ -4,8 +4,8 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 export const getUser = (callback) => async dispatch => {
   try {
-    const token = await AsyncStorage.getItem('token')
-    const res = await axios.get(config.APP_BACKEND.concat('user/details/10'))
+    const id = 18
+    const res = await axios.get(config.APP_BACKEND.concat(`user/details/${id}`))
     callback(true)
     console.log('ini akun', res)
     dispatch({

@@ -58,10 +58,11 @@ class TopUp extends Component {
             <Text style={{ marginTop: 10, paddingLeft: 10 }}>Atau Masukkan nominal Top Up disini</Text>
             <TextInput
               placeholder='Minimal Rp 10.000'
+              keyboardType= 'phone-pad'
               style={styles.input}
-              onChange={this.handleonChangeInputCash}
+              onChangeText={(text) => this.setState({cash: text})}
             />
-            <TouchableOpacity style={styles.btnJoinNow}>
+            <TouchableOpacity style={styles.btnJoinNow} onPress={this.onSubmit}>
               <Text style={{ color: 'white' }}>Top Up Sekarang</Text>
             </TouchableOpacity>
           </Card>

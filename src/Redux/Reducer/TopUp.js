@@ -3,9 +3,9 @@ const initialState = {
   isLoading: false
 }
 
-const topUp = (state = initialState, action) => {
+const TopUp = (state = initialState, action) => {
   switch (action.type) {
-    case 'TOP_UP': {
+    case 'UPDATE_TOP_UP': {
       return {
         ...state,
         isLoading: true,
@@ -17,4 +17,4 @@ const topUp = (state = initialState, action) => {
   }
 }
 
-export default topUp
+export default TopUp
