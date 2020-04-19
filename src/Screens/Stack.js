@@ -18,27 +18,31 @@ import { connect } from 'react-redux'
 
 // redux state
 import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
+import { setLogin } from '../Redux/Actions/Auth/Login'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
 import { AsyncStorage } from 'react-native'
+import { REGISTER } from 'redux-persist'
 
 const Stack = createStackNavigator()
 const mapStateToProps = state => {
   return {
     check: state.SecurityCheck,
-    verify: state.Verify
+    verify: state.Verify,
+    login: state.Login
   }
 }
 export default connect(mapStateToProps, { SecurityCheck, setVerify })(class StackScreen extends Component {
   render () {
     return (
       <Stack.Navigator>
-        {AsyncStorage.getItem('token')
+        {this.props.check.isLogged
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+        {this.props.login.isLogged
+        ?<Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+        :<Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />}
         <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
-        <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Buat Code' component={MakeSecurity} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Confirm Security' component={ConfirmSecurity} options={{ headerShwon: true }} />
         <Stack.Screen name='Lupa Security Code' component={LupaSecurityCode} options={{ headerShown: true }} />

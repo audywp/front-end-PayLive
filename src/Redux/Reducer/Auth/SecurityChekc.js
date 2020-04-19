@@ -15,6 +15,12 @@ export default function SecurityCheck (state = intialState, { type, payload }) {
         hideGuide: true,
         data: payload
       }
+    case 'IS_LOGOUT':
+      return {
+        ...state,
+        isLogged: false,
+        isLoading: true
+      }
     default:
       return state
   }

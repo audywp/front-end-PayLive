@@ -79,19 +79,12 @@ class Home extends Component {
             </View>
           </View>
           <View style={styles.Body}>
-<<<<<<< HEAD
             <View style={styles.navIC}>
               <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
                   <Text style={{ textAlign: 'center' }}>PLN</Text>
                 </TouchableOpacity>
-=======
-            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
-                <Text>PLN</Text>
->>>>>>> ca9edbeda7ce66e1c046366b89c7e2b1c4baae1d
               </View>
               <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
@@ -125,17 +118,11 @@ class Home extends Component {
                   <Text style={{ textAlign: 'center' }}>TV Kabel</Text>
                 </TouchableOpacity>
               </View>
-<<<<<<< HEAD
               <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
                   <Text style={{ textAlign: 'center' }}>Streaming</Text>
                 </TouchableOpacity>
-=======
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
-                <Text>Television</Text>
->>>>>>> ca9edbeda7ce66e1c046366b89c7e2b1c4baae1d
               </View>
               <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>

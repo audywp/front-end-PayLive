@@ -13,7 +13,7 @@ class LoginScreen extends Component {
       phone: 0,
       phoneError: null,
       isLoading: false,
-      content: <Text syle={{ color: 'white' }}> Berikutnya </Text>
+      content: <Text style={{ color: 'white' }}> Berikutnya </Text>
     }
     this.handleRegister = () => {
       this.props.navigation.navigate('Join PayLive')
@@ -41,17 +41,13 @@ class LoginScreen extends Component {
       }
       if (this.props.login.isLoading === true) {
         this.setState({
-          content: this.state.content = <Text syle={{ color: 'white' }}> Berikutnya </Text>
+          content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
         })
       }
     }
   }
 
   render () {
-    if (this.props.login.isLogged === true) {
-      this.props.navigation.navigate('Security Code', this.props.login.data.data)
-      this.setState({ content: <Text syle={{ color: 'white' }}> Berikutnya </Text> })
-    }
     return (
       <View style={styles.parent}>
         <View style={{ marginTop: 40 }}>

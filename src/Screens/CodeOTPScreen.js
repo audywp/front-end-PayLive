@@ -35,8 +35,6 @@ class CodeOTPScreen extends Component {
   }
 
   render () {
-    console.disableYellowBox = true
-    console.log(this.props.verify.data.data)
     if (this.props.verify.isVerified === true) {
       this.props.navigation.navigate('Buat Code', { data: this.props.verify.data.data })
     }
