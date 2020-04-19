@@ -1,5 +1,6 @@
 import config from '../../../Utils/config'
 import axios from 'axios'
+import { Alert } from 'react-native'
 
 export const setRegister = data => async dispatch => {
   // return {
@@ -17,7 +18,7 @@ export const setRegister = data => async dispatch => {
         payload: res.data
       })
     } else {
-      console.log('failed')
+      Alert.alert(res.data.msg)
     }
   } catch (error) {
     console.log(error)

@@ -1,6 +1,5 @@
 const intialState = {
   data: {},
-  isLogged: false,
   isLoading: false
 }
 
@@ -9,7 +8,6 @@ export default function Login (state = intialState, { type, payload }) {
     case 'IS_LOGIN':
       return {
         ...state,
-        isLogged: true,
         isLoading: true,
         data: payload
       }

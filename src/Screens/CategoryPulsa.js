@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, Label, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
-import { Icon, Picker, Form, Header, Left, Body, Right, Button, Title } from 'native-base'
-import IconCard from 'react-native-vector-icons/FontAwesome5'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
+import { Icon, Picker, Form } from 'native-base'
 import { TextInput } from 'react-native-gesture-handler'
 // import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 const { width: WIDTH } = Dimensions.get('window')
-
-var radio_props = [
-  { label: 'prabayar', value: 0 },
-  { label: 'pasca bayar', value: 1 }
-]
 
 class CategoryPulsa extends Component {
   constructor (props) {
@@ -36,7 +30,6 @@ class CategoryPulsa extends Component {
               mode='modal'
               placeholder='Select your SIM'
               iosIcon={<Icon name='arrow-down' />}
-              placeholder='Select your SIM'
               textStyle={{ color: '#fff' }}
               itemStyle={{
                 backgroundColor: '#d3d3d3',
@@ -82,7 +75,6 @@ class CategoryPulsa extends Component {
                 mode='modal'
                 placeholder='Select your SIM'
                 iosIcon={<Icon name='arrow-down' />}
-                placeholder='Select your SIM'
                 textStyle={{ color: '#5cb85c' }}
                 itemStyle={{
                   backgroundColor: '#d3d3d3',
@@ -111,7 +103,6 @@ class CategoryPulsa extends Component {
                 mode='modal'
                 placeholder='Select your SIM'
                 iosIcon={<Icon name='arrow-down' />}
-                placeholder='Select your SIM'
                 textStyle={{ color: '#5cb85c' }}
                 itemStyle={{
                   backgroundColor: '#d3d3d3',

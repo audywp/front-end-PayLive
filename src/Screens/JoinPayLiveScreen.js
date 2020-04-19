@@ -32,7 +32,7 @@ class JoinPayLive extends Component {
       styleBtn: styles.disabledBtn,
       isLoading: false,
       modalVisible: false,
-      content: <Text> Berikutnya </Text>
+      content: <Text style={{ color: 'white' }}> Berikutnya </Text>
     }
     this.checkname = () => {
       const req = /^^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$$/
@@ -79,26 +79,17 @@ class JoinPayLive extends Component {
         phone: this.state.phone,
         email: this.state.email
       }
-      console.log(this.state.phone)
       this.props.setRegister(data)
-      setTimeout(() => {
-        if (this.props.register.data.success) {
-          this.props.navigation.navigate('CodeOTP')
-          this.setState({
-            modalVisible: !this.state.modalVisible,
-            phone: this.state.phone = 0
-          })
-          console.log('ok')
-        } else {
-          console.log(this.props.register)
-          Alert.alert(this.props.register.data.msg)
-        }
+      if (this.props.register.isLoading === false) {
         this.setState({
-          content: this.state.content = <Spinner color='white' />,
-          modalVisible: !this.state.modalVisible,
-          phone: (this.state.phone = 0)
+          content: this.state.content = <Spinner color='white' />
         })
-      }, 1)
+      }
+      if (this.props.register.isLoading === true) {
+        this.setState({
+          content: this.state.content = <Text style={{ color: 'white' }}>Berikutnya</Text>
+        })
+      }
     }
   }
 
@@ -187,7 +178,7 @@ class JoinPayLive extends Component {
           <Modal
             animationType='slide'
             transparent
-            visible={this.state.modalVisible}
+            visible={this.props.register.isRegistered === false ? this.state.modalVisible === true : this.state.modalVisible === false}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.')
             }}
@@ -213,7 +204,7 @@ class JoinPayLive extends Component {
                       this.setState({
                         modalVisible: !this.state.modalVisible
                       })
-                      this.props.navigation.navigate('CodeOTP')
+                      this.props.navigation.navigate('CodeOTP', { data: this.props.register.data.id })
                     }}
                     style={{
                       paddingVertical: 20,

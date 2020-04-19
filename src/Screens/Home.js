@@ -50,7 +50,6 @@ class Home extends Component {
                   <MaterialCommunityIcons name='plus-circle-outline' color='#4a2d8b' size={30} />
                 </TouchableOpacity>
                 <Text style={{ color: '#4a2d8b', fontFamily: 'Caladea-Regular' }}>Top Up</Text>
-
               </View>
               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Feather name='upload' color='#4a2d8b' size={30} />
@@ -77,48 +76,62 @@ class Home extends Component {
             </View>
           </View>
           <View style={styles.Body}>
-            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={style.IconNav} name='lightbulb' size={30} color='#F7C738' />
-                <Text>PLN</Text>
+            <View style={styles.navIC}>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
+                  <Text style={{ textAlign: 'center' }}>PLN</Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <MaterialIcons style={styles.IconNav} name='phone-android' size={30} color='blue' />
+                  <Text style={{ textAlign: 'center' }}>Pulsa</Text>
                 </TouchableOpacity>
-                <Text>Pulsa</Text>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Ionicons style={styles.IconNav} name='ios-globe' size={30} color='green' />
-                <Text>Paket Data</Text>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <Ionicons style={styles.IconNav} name='ios-globe' size={30} color='green' />
+                  <Text style={{ textAlign: 'center' }}>Internet</Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={styles.IconNav} name='money-check-alt' size={30} color='lightblue' />
-                <Text>Pasca Bayar</Text>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <FontAwesome5 style={styles.IconNav} name='money-check-alt' size={30} color='lightblue' />
+                  <Text style={{ textAlign: 'center' }}>Pra bayar</Text>
+                </TouchableOpacity>
               </View>
             </View>
-            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={styles.IconNav} name='shield-alt' size={30} color='#77c969' />
-                <Text>BPJS</Text>
+            <View style={styles.navIC}>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <FontAwesome5 style={styles.IconNav} name='shield-alt' size={30} color='#77c969' />
+                  <Text style={{ textAlign: 'center' }}>BPJS</Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Feather style={styles.IconNav} name='tv' size={30} color='#e05514' />
-                <Text>TV Kabel</Text>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <Feather style={styles.IconNav} name='tv' size={30} color='#e05514' />
+                  <Text style={{ textAlign: 'center' }}>TV Kabel</Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
-                <Text>PLN</Text>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
+                  <Text style={{ textAlign: 'center' }}>Streaming</Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Entypo style={styles.IconNav} name='dots-three-horizontal' size={30} color='#4b088a' />
-                <Text>Lainnya</Text>
+              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
+                  <Entypo style={styles.IconNav} name='dots-three-horizontal' size={30} color='#4b088a' />
+                  <Text style={{ textAlign: 'center' }}>Lainnya</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
 
         </Container>
-        <View style={{ padding: 20, backgroundColor: 'white', marginTop: -40 }}>
+        <View style={{ padding: 20, backgroundColor: 'white' }}>
           <View style={home.descPayLive}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Kenali PayLive Lebih Dekat</Text>
@@ -177,28 +190,18 @@ class Home extends Component {
           />
           <ScrollView horizontal>
             <CardPromo
-              title='Cashback lagi dan lagi'
-              desc='Serbu berbagai promo terbaru OVO'
               img={require('../Assets/Images/promo1.jpg')}
             />
             <CardPromo
-              title='Cashback lagi dan lagi'
-              desc='Serbu berbagai promo terbaru OVO'
               img={require('../Assets/Images/promo2.jpg')}
             />
             <CardPromo
-              title='Cashback lagi dan lagi'
-              desc='Serbu berbagai promo terbaru OVO'
               img={require('../Assets/Images/promo3.jpg')}
             />
             <CardPromo
-              title='Cashback lagi dan lagi'
-              desc='Serbu berbagai promo terbaru OVO'
               img={require('../Assets/Images/promo4.jpeg')}
             />
             <CardPromo
-              title='Cashback lagi dan lagi'
-              desc='Serbu berbagai promo terbaru OVO'
               img={require('../Assets/Images/promo5.jpg')}
             />
           </ScrollView>
@@ -217,6 +220,12 @@ const home = StyleSheet.create({
 })
 
 const styles = StyleSheet.create({
+  navIC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%'
+  },
   IconNav: {
     paddingVertical: 10,
     paddingHorizontal: 15,
@@ -225,18 +234,25 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   Body: {
-    marginTop: 20,
-    padding: 20,
-    height: 200,
+    marginVertical: 10,
+    paddingHorizontal: 20,
+    height: 220,
+    alignItems: 'center',
     borderRadius: 20,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     shadowOffset: {
       width: 0,
-      height: 12
+      height: 3
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.00,
     backgroundColor: 'white',
     elevation: 5
+  },
+  Kios: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }
 })

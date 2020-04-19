@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Avatar, Badge, Image, Button } from 'react-native-elements'
 import { Text, Card, Right } from 'native-base'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -7,7 +7,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   profilePicture: {
@@ -112,9 +111,7 @@ class Profile extends Component {
                 name='user-edit'
                 size={16}
               />
-              <TouchableOpacity
-                onPress={this.props.navigation.navigate('Edit Profile')}
-              >
+              <TouchableOpacity>
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>

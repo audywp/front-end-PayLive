@@ -1,7 +1,7 @@
 const intialState = {
   data: {},
   isLoading: false,
-  pending: true
+  isRegistered: false
 }
 console.log(intialState.pending)
 export default function Register (state = intialState, { type, payload }) {
@@ -10,14 +10,13 @@ export default function Register (state = intialState, { type, payload }) {
       return {
         ...state,
         isLoading: true,
-        pending: false,
+        isRegistered: true,
         data: payload
       }
-    case 'FAILED_REGISTER':
+    case 'FAILED':
       return {
         ...state,
-        isLoading: true,
-        pengin: false,
+        isLoading: false,
         data: payload
       }
     default:

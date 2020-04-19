@@ -15,32 +15,35 @@ export default connect(mapStateToProps, { MakeSecurity })(class SecurityCode ext
     super(props)
     this.state = {
       id: 0,
-      securityCode: ''
+      security: 0
     }
-    const id = this.props.route.params.data
     this.handleScreenToLogin = () => {
       const data = {
-        securityCode: this.state.securityCode
+        id: this.props.route.params.data
       }
-      this.props.MakeSecurity(id, data)
-      console.log(data.securityCode)
+      this.props.MakeSecurity(data.id, data.securityCode)
+      if (this.props.confirm.isLoading === true) {
+        this.props.navigation.navigate('Login', { data: data.id })
+      }
+      console.log(this.props)
     }
   }
 
   render () {
-    if (this.props.confirm.data.success === true) {
-      this.props.navigation.navigate('Login', { data: this.props.route.params.data })
-    }
+    console.disableYellowBox = true
+    console.log(this.state.security)
+    console.log(this.props.confirm)
+    console.log(this.props)
     return (
       <View>
         <View>
           <Text style={{ color: '#5f27cd', textAlign: 'center', marginTop: 30, fontWeight: 'bold', fontSize: 18, fontFamily: 'Roboto' }}>
-            Buat Security Code Anda
+            Masukan Security Code Anda
           </Text>
         </View>
         <View>
           <TextInput
-            onChangeText={text => this.setState({ securityCode: text })}
+            onChangeText={text => this.setState({ security: text })}
             style={{ alignSelf: 'center', fontSize: 40 }}
             maxLength={6}
             textContentType='password'
