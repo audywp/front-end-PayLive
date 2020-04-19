@@ -82,7 +82,7 @@ class Home extends Component {
           <View style={styles.Body}>
             <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
               <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={style.IconNav} name='lightbulb' size={30} color='#F7C738' />
+                <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
                 <Text>PLN</Text>
               </View>
               <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
@@ -111,7 +111,7 @@ class Home extends Component {
               </View>
               <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
                 <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
-                <Text>PLN</Text>
+                <Text>Television</Text>
               </View>
               <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
                 <Entypo style={styles.IconNav} name='dots-three-horizontal' size={30} color='#4b088a' />

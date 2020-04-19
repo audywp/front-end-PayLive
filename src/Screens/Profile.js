@@ -52,6 +52,10 @@ class Profile extends Component {
   constructor (props) {
     super(props)
     this.state = {}
+
+    this.handleScreenToEditProfile = () => {
+      this.props.navigation.navigate('Edit Profile')
+    }
   }
 
   render () {
@@ -105,8 +109,7 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <TouchableOpacity onPress={() => { this.props.navigation.navigate('Edit Profile') }}>
+              <TouchableOpacity onPress={this.handleScreenToEditProfile} style={{ flexDirection: 'row' }}>
                 <FontAwesome5
                   color='#4a2d8b'
                   style={{ marginRight: 15 }}
@@ -114,10 +117,6 @@ class Profile extends Component {
                   name='user-edit'
                   size={16}
                 />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={this.props.navigation.navigate('Edit Profile')}
-              >
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>

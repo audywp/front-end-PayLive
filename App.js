@@ -39,7 +39,7 @@ export default class App extends Component {
               <Stack.Screen name='CodeOTP' component={CodeOTP} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
-              <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+              {/* <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
               <Stack.Screen name='TransferRek' component={TransferRek} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Transfer PayLive' component={TransferPaylive} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Konfirmasi Transfer' component={konfirmasi} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
