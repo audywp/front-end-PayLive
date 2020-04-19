@@ -7,6 +7,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
+import AsyncStorage from '@react-native-community/async-storage'
+import { getUser } from '../Redux/Actions/ActionsUser'
+import { connect } from 'react-redux'
 
 const styles = StyleSheet.create({
   profilePicture: {
@@ -50,14 +53,31 @@ const styles = StyleSheet.create({
 class Profile extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      fullname: '',
+      email: '',
+      profile_picture: '',
+      cash: ''
+    }
 
     this.handleScreenToEditProfile = () => {
       this.props.navigation.navigate('Edit Profile')
     }
+    this.handleLogout = () => {
+      AsyncStorage.removeItem('token')
+      console.log(AsyncStorage.getItem('token'))
+    }
+  }
+
+  componentDidMount () {
+    this.props.getUser(status => {
+      console.log(status, 'asdsaasd')
+    })
   }
 
   render () {
+    const { usersdetails } = this.props.profile
+    console.log('lalala', this.props.profile)
     return (
       <ScrollView>
         <View style={styles.Main}>
@@ -79,8 +99,8 @@ class Profile extends Component {
               style={{ width: 45, height: 45 }}
             />
             <View style={{ marginLeft: 15 }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Ainaya</Text>
-              <Text> 0812-3456-7891 </Text>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{usersdetails && usersdetails.fullname}</Text>
+              <Text> {usersdetails && usersdetails.cash}</Text>
             </View>
           </View>
           <View style={styles.Kios}>
@@ -108,7 +128,6 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-<<<<<<< HEAD
               <TouchableOpacity onPress={this.handleScreenToEditProfile} style={{ flexDirection: 'row' }}>
                 <FontAwesome5
                   color='#4a2d8b'
@@ -117,16 +136,6 @@ class Profile extends Component {
                   name='user-edit'
                   size={16}
                 />
-=======
-              <FontAwesome5
-                color='#4a2d8b'
-                style={{ marginRight: 15 }}
-                active
-                name='user-edit'
-                size={16}
-              />
-              <TouchableOpacity>
->>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>
@@ -261,6 +270,7 @@ class Profile extends Component {
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Button
+            onPress={this.handleLogout}
             title='Sign Out'
             titleStyle={{ fontWeight: 'bold' }}
             containerStyle={{ marginVertical: 15, alignItems: 'center' }}
@@ -276,5 +286,8 @@ class Profile extends Component {
     )
   }
 }
+const mapStateToProps = (state) => ({
+  profile: state.UserDetails
+})
 
-export default Profile
+export default connect(mapStateToProps, { getUser })(Profile)

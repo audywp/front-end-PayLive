@@ -1,12 +1,28 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
 import { Card } from 'native-base'
-import { } from 'react-native-gesture-handler'
+import { topUp } from '../Redux/Actions/TopUp'
+import { connect } from 'react-redux'
 
 class TopUp extends Component {
   constructor (props) {
     super(props)
-    this.state = { }
+    this.state = {
+      cash: ''
+    }
+    this.onSubmit = async e => {
+      e.preventDefault()
+      const data = {
+        cash: this.state.cash
+      }
+      this.props.topUp(data)
+    }
+  }
+
+  handleonChangeInputCash = (e) => {
+    this.setState({
+      cash: e.currentTarget.value
+    })
   }
 
   render () {
@@ -43,6 +59,7 @@ class TopUp extends Component {
             <TextInput
               placeholder='Minimal Rp 10.000'
               style={styles.input}
+              onChange={this.handleonChangeInputCash}
             />
             <TouchableOpacity style={styles.btnJoinNow}>
               <Text style={{ color: 'white' }}>Top Up Sekarang</Text>
@@ -73,4 +90,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default TopUp
+const mapStateToProps = (state) => {
+  return {
+    topUp: state.TopUp
+  }
+}
+
+export default connect(mapStateToProps, { topUp })(TopUp)

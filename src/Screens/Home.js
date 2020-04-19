@@ -79,33 +79,26 @@ class Home extends Component {
             </View>
           </View>
           <View style={styles.Body}>
-<<<<<<< HEAD
-            <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around' }}>
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
-                <Text>PLN</Text>
-=======
             <View style={styles.navIC}>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <FontAwesome5 style={styles.IconNav} name='lightbulb' size={30} color='#F7C738' />
                   <Text style={{ textAlign: 'center' }}>PLN</Text>
                 </TouchableOpacity>
->>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
               </View>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <MaterialIcons style={styles.IconNav} name='phone-android' size={30} color='blue' />
                   <Text style={{ textAlign: 'center' }}>Pulsa</Text>
                 </TouchableOpacity>
               </View>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <Ionicons style={styles.IconNav} name='ios-globe' size={30} color='green' />
                   <Text style={{ textAlign: 'center' }}>Internet</Text>
                 </TouchableOpacity>
               </View>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <FontAwesome5 style={styles.IconNav} name='money-check-alt' size={30} color='lightblue' />
                   <Text style={{ textAlign: 'center' }}>Pra bayar</Text>
@@ -113,31 +106,25 @@ class Home extends Component {
               </View>
             </View>
             <View style={styles.navIC}>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <FontAwesome5 style={styles.IconNav} name='shield-alt' size={30} color='#77c969' />
                   <Text style={{ textAlign: 'center' }}>BPJS</Text>
                 </TouchableOpacity>
               </View>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <Feather style={styles.IconNav} name='tv' size={30} color='#e05514' />
                   <Text style={{ textAlign: 'center' }}>TV Kabel</Text>
                 </TouchableOpacity>
               </View>
-<<<<<<< HEAD
-              <View style={{ alignItems: 'center', height: 64, justifyContent: 'space-between' }}>
-                <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
-                <Text>Television</Text>
-=======
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <Entypo style={styles.IconNav} name='tv' size={30} color='#9c49eb' />
                   <Text style={{ textAlign: 'center' }}>Streaming</Text>
                 </TouchableOpacity>
->>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
               </View>
-              <View style={{ width: 65, height: 90, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 80, height: 90, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Category Pulsa')}>
                   <Entypo style={styles.IconNav} name='dots-three-horizontal' size={30} color='#4b088a' />
                   <Text style={{ textAlign: 'center' }}>Lainnya</Text>
@@ -250,6 +237,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   Body: {
+    display: 'none',
     marginVertical: 10,
     paddingHorizontal: 20,
     height: 220,

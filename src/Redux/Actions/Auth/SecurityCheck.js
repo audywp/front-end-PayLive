@@ -4,7 +4,9 @@ import { Alert, AsyncStorage } from 'react-native'
 export const SecurityCheck = (id, data) => async dispatch => {
   try {
     const res = await axios.post(config.APP_BACKEND.concat('auth/security/check/'), data)
+    console.log(id)
     await AsyncStorage.setItem('token', res.data.token)
+    // AsyncStorage.setItem()
     if (await res.data.success === true) {
       dispatch({
         type: 'CHECK',
