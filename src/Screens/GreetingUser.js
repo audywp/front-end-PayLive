@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
 import { Card } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const { width: WIDTH } = Dimensions.get('window')
 export default class GreetingUser extends Component {
@@ -13,6 +14,7 @@ export default class GreetingUser extends Component {
   }
 
   render () {
+    console.log(AsyncStorage.getItem('token'))
     console.disableYellowBox = true
     return (
       <ScrollView horizontal>

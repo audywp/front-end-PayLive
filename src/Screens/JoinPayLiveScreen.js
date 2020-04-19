@@ -93,16 +93,6 @@ class JoinPayLive extends Component {
     }
   }
 
-  // async componentDidMount () {
-  //   await this.props.setRegister()
-  // }
-
-  // componentDidUpdate () {
-  //   if (this.props.register.data.length < 1) {
-  //     this.props.setRegister()
-  //   }
-  // }
-
   render () {
     console.disableYellowBox = true
     return (

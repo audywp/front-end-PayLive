@@ -1,6 +1,6 @@
 import config from '../../../Utils/config'
 import axios from 'axios'
-import { Alert } from 'react-native'
+import { Alert, AsyncStorage } from 'react-native'
 export const setLogin = (data) => async dispatch => {
   try {
     const res = await axios.post(config.APP_BACKEND.concat('auth/signin'), data)
@@ -16,4 +16,11 @@ export const setLogin = (data) => async dispatch => {
   } catch (error) {
     console.log(error)
   }
+}
+
+export const isLogout = () => async dispatch => {
+  AsyncStorage.removeItem('token')
+  dispatch({
+    type: 'IS_LOGOUT'
+  })
 }

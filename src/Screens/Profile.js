@@ -10,7 +10,8 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import AsyncStorage from '@react-native-community/async-storage'
 import { getUser } from '../Redux/Actions/ActionsUser'
 import { connect } from 'react-redux'
-
+import { isLogout } from '../Redux/Actions/Auth/Login'
+import { isLogout as logout } from '../Redux/Actions/Auth/SecurityCheck'
 const styles = StyleSheet.create({
   profilePicture: {
     marginTop: 20,
@@ -72,6 +73,8 @@ class Profile extends Component {
 
   componentDidMount () {
     this.props.getUser()
+    this.props.isLogout()
+    this.props.logout()
   }
 
   render () {
@@ -286,7 +289,8 @@ class Profile extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  profile: state.UserDetails
+  profile: state.UserDetails,
+  logout: state.Login
 })
 
-export default connect(mapStateToProps, { getUser })(Profile)
+export default connect(mapStateToProps, { getUser, isLogout })(Profile)

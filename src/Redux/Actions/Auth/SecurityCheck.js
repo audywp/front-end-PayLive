@@ -3,11 +3,9 @@ import axios from 'axios'
 import { Alert, AsyncStorage } from 'react-native'
 export const SecurityCheck = (id, data) => async dispatch => {
   try {
-    const res = await axios.post(config.APP_BACKEND.concat('auth/security/check/'), data)
-    console.log(id)
+    const res = await axios.post(config.APP_BACKEND.concat(`auth/security/check/${id}`), data)
     await AsyncStorage.setItem('token', res.data.token)
-    // AsyncStorage.setItem()
-    if (await res.data.success === true) {
+    if (res.data.success === true) {
       dispatch({
         type: 'CHECK',
         payload: res.data
@@ -18,4 +16,11 @@ export const SecurityCheck = (id, data) => async dispatch => {
   } catch (error) {
     console.log(error)
   }
+}
+
+export const isLogout = () => async dispatch => {
+  AsyncStorage.removeItem('token')
+  dispatch({
+    type: 'IS_LOGOUT'
+  })
 }
