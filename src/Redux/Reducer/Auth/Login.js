@@ -1,22 +1,22 @@
 const intialState = {
   data: {},
-  isLogged: false,
   isLoading: false
 }
 
-export default function Login (state = intialState, action) {
-  switch (action.type) {
+export default function Login (state = intialState, { type, payload }) {
+  switch (type) {
     case 'IS_LOGIN':
       return {
         ...state,
-        isLogged: true,
-        isLoading: true
+        isLoading: true,
+        data: payload
       }
-    case 'Is_LOGOUT':
+    case 'IS_FAILED':
       return {
         ...state,
         isLogged: false,
-        isLoading: true
+        isLoading: true,
+        data: payload
       }
     default:
       return state

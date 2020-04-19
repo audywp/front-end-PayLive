@@ -1,20 +1,39 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { MakeSecurity } from '../Redux/Actions/Auth/CreateSecurityCode'
+import { connect } from 'react-redux'
 
-export default class SecurityCode extends Component {
+const mapStateToProps = state => {
+  return {
+    confirm: state.MakeSecurity
+  }
+}
+
+export default connect(mapStateToProps, { MakeSecurity })(class SecurityCode extends Component {
   constructor (props) {
     super(props)
-    this.handleScreenToLupaSecurityCode = () => {
-      this.props.navigation.navigate('Lupa Security Code')
+    this.state = {
+      id: 0,
+      security: 0
     }
     this.handleScreenToLogin = () => {
-      this.props.navigation.navigate('Home')
+      const data = {
+        id: this.props.route.params.data
+      }
+      this.props.MakeSecurity(data.id, data.securityCode)
+      if (this.props.confirm.isLoading === true) {
+        this.props.navigation.navigate('Login', { data: data.id })
+      }
+      console.log(this.props)
     }
   }
 
   render () {
     console.disableYellowBox = true
+    console.log(this.state.security)
+    console.log(this.props.confirm)
+    console.log(this.props)
     return (
       <View>
         <View>
@@ -24,7 +43,10 @@ export default class SecurityCode extends Component {
         </View>
         <View>
           <TextInput
+            onChangeText={text => this.setState({ security: text })}
             style={{ alignSelf: 'center', fontSize: 40 }}
+            maxLength={6}
+            textContentType='password'
             keyboardType='phone-pad'
             placeholder='_ _ _ _ _ _'
           />
@@ -32,10 +54,7 @@ export default class SecurityCode extends Component {
         <TouchableOpacity onPress={this.handleScreenToLogin}>
           <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.handleScreenToLupaSecurityCode}>
-          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>LUPA SECURITY CODE?</Text>
-        </TouchableOpacity>
       </View>
     )
   }
-}
+})

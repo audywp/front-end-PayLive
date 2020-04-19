@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Button, TextInput, StyleSheet } from 'react-native'
-import { Header, Card } from 'native-base'
-import { ScrollView } from 'react-native-gesture-handler'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+import { Card } from 'native-base'
+import { } from 'react-native-gesture-handler'
 
 class TopUp extends Component {
   constructor (props) {

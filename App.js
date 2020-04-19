@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+<<<<<<< HEAD
 import { createStackNavigator } from '@react-navigation/stack'
 import Login from './src/Screens/LoginScreen'
 import Join from './src/Screens/JoinPayLiveScreen'
@@ -17,10 +18,12 @@ import TransferRek from './src/Screens/TransferRekening'
 import TransferPaylive from './src/Screens/TransferPaylive'
 import konfirmasi from './src/Screens/KonfirmasiTransfer'
 
+=======
+>>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './src/Redux/Store'
-const Stack = createStackNavigator()
+import Stack from './src/Screens/Stack'
 
 export default class App extends Component {
   render () {
@@ -28,6 +31,7 @@ export default class App extends Component {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <NavigationContainer>
+<<<<<<< HEAD
             <Stack.Navigator>
               <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
               <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />
@@ -45,6 +49,9 @@ export default class App extends Component {
               <Stack.Screen name='Konfirmasi Transfer' component={konfirmasi} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
             </Stack.Navigator>
+=======
+            <Stack />
+>>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
           </NavigationContainer>
         </PersistGate>
       </Provider>

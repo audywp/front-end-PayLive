@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Avatar, Badge, Image, Button } from 'react-native-elements'
 import { Text, Card, Right } from 'native-base'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -7,7 +7,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
   profilePicture: {
@@ -109,6 +108,7 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
+<<<<<<< HEAD
               <TouchableOpacity onPress={this.handleScreenToEditProfile} style={{ flexDirection: 'row' }}>
                 <FontAwesome5
                   color='#4a2d8b'
@@ -117,6 +117,16 @@ class Profile extends Component {
                   name='user-edit'
                   size={16}
                 />
+=======
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='user-edit'
+                size={16}
+              />
+              <TouchableOpacity>
+>>>>>>> a6231bd57b1a4223b5342201ae7fbebd8e02d905
                 <Text>Ubah Profile</Text>
               </TouchableOpacity>
               <Right>

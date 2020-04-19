@@ -9,8 +9,6 @@ import IconHome from 'react-native-vector-icons/Foundation'
 import IconScan from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import IconUser from 'react-native-vector-icons/FontAwesome'
-// import IconTag from 'react-native-vector-icons/MaterialCommunityIcons'
-import TransferPaylive from '../../src/Screens/TransferPaylive'
 const BottomTabs = createBottomTabNavigator()
 
 class BottomStack extends Component {

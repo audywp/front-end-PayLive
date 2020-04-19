@@ -7,8 +7,8 @@ const { width: WIDTH } = Dimensions.get('window')
 export default class GreetingUser extends Component {
   constructor (props) {
     super(props)
-    this.changeScreenToLogin = () => {
-      this.props.navigation.navigate('Join PayLive')
+    this.handleScreenToLogin = () => {
+      this.props.navigation.navigate('Login')
     }
   }
 
@@ -35,7 +35,7 @@ export default class GreetingUser extends Component {
         >
           <Text style={{ fontSize: 15, color: '#3F458E', textAlign: 'center', fontWeight: 'bold', marginTop: 20 }}>Anda Bisa Atur Keuangan Dengan Tepat</Text>
           <Text style={{ fontSize: 15, color: '#3F458E', textAlign: 'center', marginTop: 20 }}>Tidak ada kebocoran keuangan karena sudah memiliki perencanaan dan dan bisa melihat riwayat </Text>
-          <TouchableOpacity style={styles.btn} onPress={this.changeScreenToLogin}>
+          <TouchableOpacity style={styles.btn} onPress={this.handleScreenToLogin}>
             <Text style={{ color: '#fff' }}>Mulai</Text>
           </TouchableOpacity>
         </Card>

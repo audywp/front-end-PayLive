@@ -9,7 +9,7 @@ import {
   Alert,
   Image
 } from 'react-native'
-// import { Spinner, Toast } from 'native-base'
+import { Spinner } from 'native-base'
 import { Input, CheckBox } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
@@ -32,7 +32,7 @@ class JoinPayLive extends Component {
       styleBtn: styles.disabledBtn,
       isLoading: false,
       modalVisible: false,
-      content: <Text> Berikutnya </Text>
+      content: <Text style={{ color: 'white' }}> Berikutnya </Text>
     }
     this.checkname = () => {
       const req = /^^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$$/
@@ -80,35 +80,28 @@ class JoinPayLive extends Component {
         email: this.state.email
       }
       this.props.setRegister(data)
-      if (this.props.register.data.success) {
-        this.props.navigation.navigate('CodeOTP')
+      if (this.props.register.isLoading === false) {
         this.setState({
-          modalVisible: !this.state.modalVisible,
-          phone: (this.state.phone = 0)
+          content: this.state.content = <Spinner color='white' />
         })
-      } else {
-        console.log(this.props.register)
-        Alert.alert(this.props.register.data.msg)
       }
-      // if (this.props.register.isLoading === false) {
-      //   this.setState({
-      //     isLoading: !this.state.isLoading,
-      //     content: this.state.content = <Spinner color='white' />
-      //   })
-      // } else {
-      //   this.setState({
-      //     isLoading: !this.state.isLoading,
-      //     content: this.state.content = <Text>Berikutnya</Text>,
-      //   })
-      // }
-      console.log(this.props.register)
-      console.log(this.props.register.isLoading)
+      if (this.props.register.isLoading === true) {
+        this.setState({
+          content: this.state.content = <Text style={{ color: 'white' }}>Berikutnya</Text>
+        })
+      }
     }
   }
 
-  componentDidMount () {
-    this.props.setRegister()
-  }
+  // async componentDidMount () {
+  //   await this.props.setRegister()
+  // }
+
+  // componentDidUpdate () {
+  //   if (this.props.register.data.length < 1) {
+  //     this.props.setRegister()
+  //   }
+  // }
 
   render () {
     console.disableYellowBox = true
@@ -185,7 +178,7 @@ class JoinPayLive extends Component {
           <Modal
             animationType='slide'
             transparent
-            visible={this.state.modalVisible}
+            visible={this.props.register.isRegistered === false ? this.state.modalVisible === true : this.state.modalVisible === false}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.')
             }}
@@ -211,7 +204,7 @@ class JoinPayLive extends Component {
                       this.setState({
                         modalVisible: !this.state.modalVisible
                       })
-                      this.props.navigation.navigate('CodeOTP')
+                      this.props.navigation.navigate('CodeOTP', { data: this.props.register.data.id })
                     }}
                     style={{
                       paddingVertical: 20,
