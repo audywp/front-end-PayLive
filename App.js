@@ -13,6 +13,9 @@ import TopUp from './src/Screens/TopUp'
 import CategoryPulsa from './src/Screens/CategoryPulsa'
 import EditProfile from './src/Screens/EditProfile'
 import UbahEmail from './src/Screens/UbahEmail'
+import TransferRek from './src/Screens/TransferRekening'
+import TransferPaylive from './src/Screens/TransferPaylive'
+import konfirmasi from './src/Screens/KonfirmasiTransfer'
 
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -34,10 +37,13 @@ export default class App extends Component {
               <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Lupa Security Code' component={LupaSecurityCode} options={{ title: 'Lupa Security Code', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='CodeOTP' component={CodeOTP} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
-              <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
               <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+              <Stack.Screen name='TransferRek' component={TransferRek} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+              <Stack.Screen name='Transfer PayLive' component={TransferPaylive} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+              <Stack.Screen name='Konfirmasi Transfer' component={konfirmasi} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+              <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
             </Stack.Navigator>
           </NavigationContainer>
         </PersistGate>

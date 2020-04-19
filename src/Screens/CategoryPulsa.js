@@ -3,7 +3,7 @@ import { View, Text, Label, StyleSheet, Dimensions, TouchableOpacity } from 'rea
 import { Icon, Picker, Form, Header, Left, Body, Right, Button, Title } from 'native-base'
 import IconCard from 'react-native-vector-icons/FontAwesome5'
 import { TextInput } from 'react-native-gesture-handler'
-// import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -57,15 +57,15 @@ class CategoryPulsa extends Component {
             </Picker>
           </Form>
         </View>
-        {/* <RadioForm
-        buttonSize={10}
-        buttonColor={'#5f27cd'}
+        <RadioForm
+          buttonSize={10}
+          buttonColor='#5f27cd'
           style={styles.radio}
           radio_props={radio_props}
           initial={0}
-          formHorizontal={true}
-          onPress={(value) => {this.setState({value:value})}}
-        /> */}
+          formHorizontal
+          onPress={(value) => { this.setState({ value: value }) }}
+        />
         <View style={styles.container}>
           <View>
             <Text>Nomor Ponsel</Text>

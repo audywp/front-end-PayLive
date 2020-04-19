@@ -137,6 +137,7 @@ class EditProfile extends Component {
             
             <TouchableOpacity onPress={this.props.navigation.navigate('Ubah Email')}>
              <Input
+             
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='ainayass@gmail.com'
@@ -144,7 +145,7 @@ class EditProfile extends Component {
               label='Email'
               labelStyle={{ color: 'black', fontSize: 12 }}
             />
-</TouchableOpacity>
+            </TouchableOpacity>
 
             <TouchableOpacity style={styles.btnJoinNow} onPress={this.submitData}>
               <Text style={{ color: 'white' }}>SIMPAN</Text>
