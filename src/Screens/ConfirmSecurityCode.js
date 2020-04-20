@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import { Spinner } from 'native-base'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { MakeSecurity } from '../Redux/Actions/Auth/CreateSecurityCode'
 import { connect } from 'react-redux'
@@ -16,30 +15,34 @@ export default connect(mapStateToProps, { MakeSecurity })(class SecurityCode ext
     super(props)
     this.state = {
       id: 0,
-      securityCode: '',
-      content: <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
+      securityCode: ''
     }
-    const id = this.props.route.params.data
     this.handleScreenToLogin = () => {
       const data = {
-        securityCode: this.state.securityCode
+        id: this.props.route.params.data
       }
-      this.props.MakeSecurity(id, data)
-      this.props.navigation.navigate('Login')
+      this.props.MakeSecurity(data.id, data.securityCode)
+      if (this.props.confirm.isLoading === true) {
+
+      }
     }
   }
 
   render () {
+    console.disableYellowBox = true
+    if (this.props.confirm.data.success === true) {
+      this.props.navigation.navigate('Login', { data: data.id })
+    }
     return (
       <View>
         <View>
           <Text style={{ color: '#5f27cd', textAlign: 'center', marginTop: 30, fontWeight: 'bold', fontSize: 18, fontFamily: 'Roboto' }}>
-            Buat Security Code Anda
+            Masukan Security Code Anda
           </Text>
         </View>
         <View>
           <TextInput
-            onChangeText={text => this.setState({ securityCode: text })}
+            onChangeText={text => this.setState({ security: text })}
             style={{ alignSelf: 'center', fontSize: 40 }}
             maxLength={6}
             textContentType='password'

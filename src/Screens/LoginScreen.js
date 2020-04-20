@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import { Form, Item, Input, Label, Spinner } from 'native-base'
 import IconUser from 'react-native-vector-icons/EvilIcons'
 import { setLogin } from '../Redux/Actions/Auth/Login'
@@ -13,7 +13,7 @@ class LoginScreen extends Component {
       phone: 0,
       phoneError: null,
       isLoading: false,
-      content: <Text syle={{ color: 'white' }}> Berikutnya </Text>
+      content: <Text style={{ color: 'white' }}> Berikutnya </Text>
     }
     this.handleRegister = () => {
       this.props.navigation.navigate('Join PayLive')
@@ -33,38 +33,18 @@ class LoginScreen extends Component {
         phone: this.state.phone
       }
       this.props.setLogin(data)
-      if (this.props.login.data.success === true) {
-        console.log('true')
-        if (this.props.login.isLoading === false) {
-          this.setState({
-            isLoading: !this.state.isLoading,
-            content: this.state.content = <Spinner color='white' />
-          })
-        }
-        if (this.props.login.isLoading === true) {
-          this.setState({
-            isLoading: this.state.isLoading,
-            content: this.state.content = <Text> Berikutnya </Text>
-          })
-        }
-        this.props.navigation.navigate('Security Code')
-      } else {
-        if (this.props.login.isLoading === false) {
-          this.setState({
-            isLoading: !this.state.isLoading,
-            content: this.state.content = <Spinner color='white' />
-          })
-          console.log('test')
-        }
-        if (this.props.login.isLoading === true) {
-          this.setState({
-            isLoading: this.state.isLoading,
-            content: this.state.content = <Text syle={{ color: 'white' }}> Berikutnya </Text>
-          })
-        }
-        Alert.alert(this.props.login.data.msg)
+      if (this.props.login.isLoading === false) {
+        this.setState({
+          content: this.state.content = <Spinner color='white' />
+        })
+        console.log('test')
       }
-      console.log(this.props.login)
+      if (this.props.login.isLoading === true) {
+        this.setState({
+          content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
+        })
+        this.props.navigation.navigate('Security Code', this.props.login.data)
+      }
     }
   }
 

@@ -12,7 +12,9 @@ import HeaderProme from '../Components/HeaderProme'
 class Deals extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      
+    }
   }
 
   render () {

@@ -129,14 +129,14 @@ class EditProfile extends Component {
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='085876927639'
+              keyboardType= 'phone-pad'
               placeholderTextColor='black'
               label='Nomor Ponsel'
               labelStyle={{ color: 'black', fontSize: 12 }}
             />
             </TouchableOpacity>
-            
-            <TouchableOpacity onPress={this.props.navigation.navigate('Ubah Email')}>
              <Input
+             
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='ainayass@gmail.com'
@@ -144,8 +144,6 @@ class EditProfile extends Component {
               label='Email'
               labelStyle={{ color: 'black', fontSize: 12 }}
             />
-</TouchableOpacity>
-
             <TouchableOpacity style={styles.btnJoinNow} onPress={this.submitData}>
               <Text style={{ color: 'white' }}>SIMPAN</Text>
             </TouchableOpacity>

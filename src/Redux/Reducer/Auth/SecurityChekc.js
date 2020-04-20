@@ -1,23 +1,18 @@
 const intialState = {
   data: {},
+  isLogged: false,
   isLoading: false,
-  isLogged: false
+  hideGuide: false
 }
 
-export default function Login (state = intialState, { type, payload }) {
+export default function SecurityCheck (state = intialState, { type, payload }) {
   switch (type) {
-    case 'IS_LOGIN':
+    case 'CHECK':
       return {
         ...state,
+        isLogged: true,
         isLoading: true,
-        data: payload,
-        isLogged: true
-      }
-    case 'IS_FAILED':
-      return {
-        ...state,
-        isLogged: false,
-        isLoading: true,
+        hideGuide: true,
         data: payload
       }
     case 'IS_LOGOUT':
