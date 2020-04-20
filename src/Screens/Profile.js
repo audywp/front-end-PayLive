@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { Avatar, Badge, Image, Button } from 'react-native-elements'
 import { Text, Card, Right } from 'native-base'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -7,7 +7,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
-
+import AsyncStorage from '@react-native-community/async-storage'
+import { getUser } from '../Redux/Actions/ActionsUser'
+import { connect } from 'react-redux'
+import { isLogout } from '../Redux/Actions/Auth/Login'
+import { isOut } from '../Redux/Actions/Auth/SecurityCheck'
 const styles = StyleSheet.create({
   profilePicture: {
     marginTop: 20,
@@ -50,10 +54,27 @@ const styles = StyleSheet.create({
 class Profile extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      idUser: '',
+      fullname: '',
+      email: '',
+      profile_picture: '',
+      cash: ''
+    }
+
+    this.handleScreenToEditProfile = () => {
+      this.props.navigation.navigate('Edit Profile')
+    }
+    this.handleLogout = () => {
+      AsyncStorage.clear()
+      console.log(AsyncStorage.getItem('token'))
+      this.props.navigation.navigate('Login')
+    }
   }
 
   render () {
+    const { usersdetails } = this.props.profile
+    console.log('lalala', this.props.profile)
     return (
       <ScrollView>
         <View style={styles.Main}>
@@ -75,13 +96,16 @@ class Profile extends Component {
               style={{ width: 45, height: 45 }}
             />
             <View style={{ marginLeft: 15 }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Ainaya</Text>
-              <Text> 0812-3456-7891 </Text>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{usersdetails && usersdetails.fullname}</Text>
+              <Text> {usersdetails && usersdetails.cash}</Text>
             </View>
           </View>
           <View style={styles.Kios}>
             <Text> PayLive Club </Text>
-            <Text> Lihat Kios PayLive <AntDesign name='right' /> </Text>
+            <Text>
+              {' '}
+              Lihat Kios PayLive <AntDesign name='right' />{' '}
+            </Text>
           </View>
         </View>
         <View style={styles.Main}>
@@ -101,21 +125,41 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='user-edit' size={16} />
-              <Text>Ubah Profile</Text>
+              <TouchableOpacity onPress={this.handleScreenToEditProfile} style={{ flexDirection: 'row' }}>
+                <FontAwesome5
+                  color='#4a2d8b'
+                  style={{ marginRight: 15 }}
+                  active
+                  name='user-edit'
+                  size={16}
+                />
+                <Text>Ubah Profile</Text>
+              </TouchableOpacity>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='credit-card' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='credit-card'
+                size={16}
+              />
               <Text>My Cards</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <MaterialCommunityIcons color='#4a2d8b' style={{ marginRight: 15 }} active name='ticket-percent' size={20} />
+              <MaterialCommunityIcons
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='ticket-percent'
+                size={20}
+              />
               <Text>Kode Promo</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -127,7 +171,13 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Akun</Text>
             <View style={styles.ViewList}>
-              <Fontisto color='#4a2d8b' style={{ marginRight: 15 }} active name='locked' size={16} />
+              <Fontisto
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='locked'
+                size={16}
+              />
               <Text>Keamanan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -139,35 +189,65 @@ class Profile extends Component {
           <View>
             <Text style={{ fontSize: 20 }}>Tentang</Text>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='medal' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='medal'
+                size={16}
+              />
               <Text>Keuntungan pakai PayLive</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='lightbulb' size={16} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='lightbulb'
+                size={16}
+              />
               <Text>Panduan PayLive</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <FontAwesome5 color='#4a2d8b' style={{ marginRight: 15 }} active name='list-alt' size={20} />
+              <FontAwesome5
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='list-alt'
+                size={20}
+              />
               <Text>Syarat dan Ketentuan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <MaterialCommunityIcons color='#4a2d8b' style={{ marginRight: 15 }} active name='shield-check' size={20} />
+              <MaterialCommunityIcons
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='shield-check'
+                size={20}
+              />
               <Text>Kebijakan dan Privasi</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
               </Right>
             </View>
             <View style={styles.ViewList}>
-              <Entypo color='#4a2d8b' style={{ marginRight: 15 }} active name='help-with-circle' size={20} />
+              <Entypo
+                color='#4a2d8b'
+                style={{ marginRight: 15 }}
+                active
+                name='help-with-circle'
+                size={20}
+              />
               <Text>Pusat Bantuan</Text>
               <Right>
                 <AntDesign color='#4a2d8b' name='right' />
@@ -175,21 +255,38 @@ class Profile extends Component {
             </View>
           </View>
         </View>
-        <View style={{ paddingHorizontal: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+        <View
+          style={{
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+            flexDirection: 'row'
+          }}
+        >
           <Text>Version 3.6.0 (300)</Text>
           <Text>#PakePayLiveaja</Text>
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Button
+            onPress={this.handleLogout}
             title='Sign Out'
             titleStyle={{ fontWeight: 'bold' }}
             containerStyle={{ marginVertical: 15, alignItems: 'center' }}
-            buttonStyle={{ width: 300, borderRadius: 20, backgroundColor: '#4a2d8b', height: 50 }}
+            buttonStyle={{
+              width: 300,
+              borderRadius: 20,
+              backgroundColor: '#4a2d8b',
+              height: 50
+            }}
           />
         </View>
       </ScrollView>
     )
   }
 }
+const mapStateToProps = (state) => ({
+  profile: state.UserDetails,
+  logout: state.Login,
+  isOut: state.SecurityCheck
+})
 
-export default Profile
+export default connect(mapStateToProps, { getUser, isLogout, isOut })(Profile)

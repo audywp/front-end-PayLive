@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
-import { Form, Item, Input, Label } from 'native-base'
+import { Form, Item, Input, Label, Spinner } from 'native-base'
 import IconUser from 'react-native-vector-icons/EvilIcons'
+import { setLogin } from '../Redux/Actions/Auth/Login'
+import { connect } from 'react-redux'
 
 const { width: WIDTH } = Dimensions.get('window')
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
   constructor (props) {
     super(props)
     this.state = {
       phone: 0,
-      phoneError: null
+      phoneError: null,
+      isLoading: false,
+      content: <Text style={{ color: 'white' }}> Berikutnya </Text>
     }
-    this.changeScreenToJoin = () => {
+    this.handleRegister = () => {
       this.props.navigation.navigate('Join PayLive')
     }
     this.checkphone = () => {
@@ -24,8 +28,23 @@ export default class LoginScreen extends Component {
         this.setState({ phoneError: null })
       }
     }
-    this.navigateToHome = () => {
-      this.props.navigation.navigate('Home')
+    this.handleLogin = () => {
+      const data = {
+        phone: this.state.phone
+      }
+      this.props.setLogin(data)
+      if (this.props.login.isLoading === false) {
+        this.setState({
+          content: this.state.content = <Spinner color='white' />
+        })
+        console.log('test')
+      }
+      if (this.props.login.isLoading === true) {
+        this.setState({
+          content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
+        })
+        this.props.navigation.navigate('Security Code', this.props.login.data)
+      }
     }
   }
 
@@ -58,11 +77,14 @@ export default class LoginScreen extends Component {
                   }
                 />
               </Item>
-              <TouchableOpacity onPress={this.navigateToHome} style={styles.btnSignIn}>
-                <Text style={{ color: 'white' }}>SIGN IN</Text>
+              <TouchableOpacity
+                onPress={this.handleLogin}
+                style={styles.btnSignIn}
+              >
+                {this.state.content}
               </TouchableOpacity>
               <Text style={{ color: '#fff', marginTop: 20 }}> ATAU </Text>
-              <TouchableOpacity style={styles.btnJoinNow} onPress={this.changeScreenToJoin}>
+              <TouchableOpacity style={styles.btnJoinNow} onPress={this.handleRegister}>
                 <Text style={{ color: 'white' }}>JOIN NOW</Text>
               </TouchableOpacity>
               <TouchableOpacity style={{ marginTop: 20 }}>
@@ -76,6 +98,13 @@ export default class LoginScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    login: state.Login
+  }
+}
+export default connect(mapStateToProps, { setLogin })(LoginScreen)
 
 const styles = StyleSheet.create({
   parent: {
