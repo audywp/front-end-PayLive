@@ -14,13 +14,30 @@ import CardPromo from '../Components/CardPromo'
 import { style } from '../Utils/style'
 import HeaderProme from '../Components/HeaderProme'
 
-class Home extends Component {
-  constructor (props) {
+import { getCash } from '../Redux/Actions/Cash'
+import { setLogin } from '../Redux/Actions/Auth/Login'
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    cash: state
+
+  }
+}
+
+export default connect(mapStateToProps, { getCash })(class Home extends Component {
+  constructor(props) {
     super(props)
     this.state = {}
   }
 
-  render () {
+  componentDidMount() {
+    this.props.getCash()
+    console.log(this.props.getCash)
+  }
+
+  render() {
     return (
       <ScrollView>
         <Container style={{ backgroundColor: 'white' }}>
@@ -206,9 +223,7 @@ class Home extends Component {
       </ScrollView>
     )
   }
-}
-
-export default Home
+})
 const home = StyleSheet.create({
   descPayLive: {
     flexDirection: 'row',
