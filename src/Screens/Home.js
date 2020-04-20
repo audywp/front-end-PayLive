@@ -13,14 +13,46 @@ import HeaderComponent from '../Components/Header'
 import CardPromo from '../Components/CardPromo'
 import { style } from '../Utils/style'
 import HeaderProme from '../Components/HeaderProme'
+import { connect } from 'react-redux'
+import { getUser } from '../Redux/Actions/ActionsUser'
+import AsyncStorage from '@react-native-community/async-storage'
 
 class Home extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      idUser: '',
+      fullname: '',
+      email: '',
+      profile_picture: '',
+      cash: ''
+    }
+  }
+
+  async componentDidMount () {
+    await this.getId()
+    await this.getUser()
+  }
+
+  async getUser () {
+    const idUser = this.state.idUser
+    await this.props.getUser(idUser)
+  }
+
+  async getId () {
+    try {
+      const setIdUser = await AsyncStorage.getItem('id_user')
+      this.setState({
+        idUser: setIdUser // 26
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render () {
+    const { usersdetails } = this.props.profile
+    console.log('lalala', this.props.profile)
     return (
       <ScrollView>
         <Container style={{ backgroundColor: 'white' }}>
@@ -34,7 +66,7 @@ class Home extends Component {
                 <Text style={{ marginBottom: 9, fontSize: 18, fontFamily: 'Caladea-Regular', color: '#fff' }}>PayLive Cash</Text>
                 <View style={{ marginBottom: 7, flexDirection: 'row', color: '#fff' }}>
                   <Text style={{ fontFamily: 'Caladea-Regular', fontSize: 22, marginRight: 10, color: '#fff' }}>Rp</Text>
-                  <Text style={{ fontFamily: 'Caladea-Regular', fontSize: 40, marginRight: 10, color: '#fff' }}>150.000</Text>
+                  <Text style={{ fontFamily: 'Caladea-Regular', fontSize: 40, marginRight: 10, color: '#fff' }}>{usersdetails && usersdetails.cash}</Text>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
                   <Text style={{ marginRight: 10, fontSize: 18, fontFamily: 'Caladea-Regular', color: '#fff' }}>PayLive Points</Text>
@@ -213,8 +245,14 @@ class Home extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    profile: state.UserDetails
+  }
+}
 
-export default Home
+export default connect(mapStateToProps, { getUser })(Home)
+
 const home = StyleSheet.create({
   descPayLive: {
     flexDirection: 'row',

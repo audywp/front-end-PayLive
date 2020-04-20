@@ -55,6 +55,7 @@ class Profile extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      idUser: '',
       fullname: '',
       email: '',
       profile_picture: '',
@@ -65,8 +66,9 @@ class Profile extends Component {
       this.props.navigation.navigate('Edit Profile')
     }
     this.handleLogout = () => {
-      this.props.isLogout()
-      this.props.isOut()
+      AsyncStorage.clear()
+      console.log(AsyncStorage.getItem('token'))
+      this.props.navigation.navigate('Login')
     }
   }
 

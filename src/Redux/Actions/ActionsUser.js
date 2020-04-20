@@ -1,12 +1,9 @@
 import config from '../../Utils/config'
 import axios from 'axios'
-import AsyncStorage from '@react-native-community/async-storage'
 
-export const getUser = (callback) => async dispatch => {
+export const getUser = (id) => async dispatch => { // 26
   try {
-    const token = await AsyncStorage.getItem('id')
-    const res = await axios.get(config.APP_BACKEND.concat('user/details/10'))
-    callback(true)
+    const res = await axios.get(config.APP_BACKEND.concat(`user/details/${id}`))
     console.log('ini akun', res)
     dispatch({
       type: 'GET_USER',

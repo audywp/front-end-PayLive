@@ -22,9 +22,9 @@ class CategoryPulsa extends Component {
 
   render () {
     return (
-      <View>
-        <View style={{ backgroundColor: '#5f27cd' }}>
-          <Text style={{ fontSize: 20, marginTop: 10, color: '#fff', textAlign: 'center' }}>Operator</Text>
+      <View style={{ backgroundColor: '#fff' }}>
+        <View style={{ backgroundColor: '#fff' }}>
+          <Text style={{ fontSize: 20, marginTop: 10, color: '#5f27cd', textAlign: 'center' }}>Operator</Text>
           <Form>
             <Picker
               mode='modal'
@@ -54,7 +54,7 @@ class CategoryPulsa extends Component {
           buttonSize={10}
           buttonColor='#5f27cd'
           style={styles.radio}
-          radio_props={radio_props}
+          // radio_props={radio_props}
           initial={0}
           formHorizontal
           onPress={(value) => { this.setState({ value: value }) }}
@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
     width: WIDTH - 55,
     height: 45,
     borderRadius: 25,
+    marginVertical: 20,
     backgroundColor: '#00d2d3',
     marginTop: 30,
     alignItems: 'center',

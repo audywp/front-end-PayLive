@@ -1,5 +1,5 @@
 const Config = {
-  APP_BACKEND: 'http://localhost:3030/'
+  APP_BACKEND: 'http://54.80.245.145/'
 }
 
 export default Config

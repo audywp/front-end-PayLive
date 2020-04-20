@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from './LoginScreen'
 import Join from './JoinPayLiveScreen'
 import SKKP from './SKKPScreen'
+// import Transfer from './TransferPaylive'
 import SecurityCode from './SecurityCode'
 import LupaSecurityCode from './LupaSecurityCode'
 import CodeOTP from './CodeOTPScreen'
@@ -29,10 +30,32 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps, { SecurityCheck, setVerify })(class StackScreen extends Component {
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //     token: ''
+  //   }
+  // }
+
+  // componentDidMount () {
+  //   this.getToken()
+  // }
+
+  // async getToken () {
+  //   try {
+  //     const token = await AsyncStorage.getItem('token')
+  //     this.setState({
+  //       token: token
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   render () {
     return (
       <Stack.Navigator>
-        {this.props.check.isLogged === true
+        {this.props.check && this.props.check.isLogged
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
         <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
@@ -46,6 +69,8 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
         <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+        {/* <Stack.Screen name='Transfer PayLive' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Konfirmasi Transfer' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
         <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
       </Stack.Navigator>
     )

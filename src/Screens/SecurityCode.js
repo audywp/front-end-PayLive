@@ -35,6 +35,7 @@ export default connect(mapStateToProps, { SecurityCheck })(class SecurityCode ex
         this.setState({
           content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
         })
+        this.props.navigation.navigate('Home')
       }
     }
   }
