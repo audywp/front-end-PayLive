@@ -18,7 +18,7 @@ export const SecurityCheck = (id, data) => async dispatch => {
   }
 }
 
-export const isLogout = () => async dispatch => {
+export const isOut = () => async dispatch => {
   AsyncStorage.removeItem('token')
   dispatch({
     type: 'IS_LOGOUT'

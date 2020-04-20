@@ -19,7 +19,8 @@ export default function SecurityCheck (state = intialState, { type, payload }) {
       return {
         ...state,
         isLogged: false,
-        isLoading: true
+        isLoading: true,
+        hideGuide: false
       }
     default:
       return state

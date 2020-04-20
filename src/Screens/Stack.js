@@ -18,10 +18,7 @@ import { connect } from 'react-redux'
 
 // redux state
 import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
-import { setLogin } from '../Redux/Actions/Auth/Login'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
-import { AsyncStorage } from 'react-native'
-import { REGISTER } from 'redux-persist'
 
 const Stack = createStackNavigator()
 const mapStateToProps = state => {
@@ -38,7 +35,7 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
         {this.props.check.isLogged === true
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
-         <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
