@@ -1,8 +1,6 @@
 const intialState = {
   data: {},
-  isLogged: false,
-  isLoading: false,
-  hideGuide: false
+  isLoading: false
 }
 
 export default function SecurityCheck (state = intialState, { type, payload }) {
@@ -12,17 +10,9 @@ export default function SecurityCheck (state = intialState, { type, payload }) {
         ...state,
         isLogged: true,
         isLoading: true,
-        hideGuide: true,
         data: payload
       }
-    case 'IS_LOGOUT':
-      return {
-        ...state,
-        isLogged: false,
-        isLoading: true,
-        hideGuide: false
-      }
     default:
-      return state
+      return { ...state }
   }
 }

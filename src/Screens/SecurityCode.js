@@ -3,11 +3,11 @@ import { View, Text } from 'react-native'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { Spinner } from 'native-base'
 import { connect } from 'react-redux'
-import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
+import { SecurityCheck } from '../Redux/Actions/Auth/Login'
 
 const mapStateToProps = state => {
   return {
-    confirm: state.SecurityCheck
+    confirm: state.Login
   }
 }
 export default connect(mapStateToProps, { SecurityCheck })(class SecurityCode extends Component {
@@ -20,22 +20,21 @@ export default connect(mapStateToProps, { SecurityCheck })(class SecurityCode ex
     this.handleScreenToLupaSecurityCode = () => {
       this.props.navigation.navigate('Lupa Security Code')
     }
-    const id = this.props.route.params.data.id_user
-    this.handleScreenToHome = () => {
+    this.handleScreenToHome = async () => {
+      console.log('why fuck')
+      const id = this.props.route.params.data.id_user
       const data = {
         securityCode: this.state.securityCode
       }
-      this.props.SecurityCheck(id, data)
+      this.props.SecurityCheck(id, data).then(() => {
+        if (this.props.confirm.isLogged) {
+          this.props.navigation.navigate('Home')
+        }
+      })
       if (this.props.confirm.isLoading === false) {
         this.setState({
           content: this.state.content = <Spinner color='#00d2d3' />
         })
-      }
-      if (this.props.confirm.isLoading === true) {
-        this.setState({
-          content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
-        })
-        this.props.navigation.navigate('Home')
       }
     }
   }

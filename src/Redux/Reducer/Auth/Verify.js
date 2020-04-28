@@ -12,8 +12,9 @@ export default function Verify (state = intialState, action) {
       return {
         ...state,
         isLoading: true,
-        pending: true,
+        pending: false,
         isVerified: true,
+        isLogged: true,
         data: action.payload
       }
     case 'MAKE_CODE':
@@ -22,6 +23,7 @@ export default function Verify (state = intialState, action) {
         isLoading: true,
         data: action.payload
       }
+
     default:
       return { ...state }
   }

@@ -37,6 +37,7 @@ class Home extends Component {
   async componentDidMount() {
     await this.getId();
     await this.getUser();
+    console.log(await AsyncStorage.getItem('id_user'));
   }
 
   async getUser() {
@@ -56,6 +57,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.idUser);
     const {usersdetails} = this.props.profile;
     console.log('lalala', this.props.profile);
     return (

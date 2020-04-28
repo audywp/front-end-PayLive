@@ -7,11 +7,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
-import AsyncStorage from '@react-native-community/async-storage'
 import { getUser } from '../Redux/Actions/ActionsUser'
 import { connect } from 'react-redux'
-import { isLogout } from '../Redux/Actions/Auth/Login'
-import { isOut } from '../Redux/Actions/Auth/SecurityCheck'
+import { isOut } from '../Redux/Actions/Auth/Login'
 const styles = StyleSheet.create({
   profilePicture: {
     marginTop: 20,
@@ -66,9 +64,11 @@ class Profile extends Component {
       this.props.navigation.navigate('Edit Profile')
     }
     this.handleLogout = () => {
-      AsyncStorage.clear()
-      console.log(AsyncStorage.getItem('token'))
-      this.props.navigation.navigate('Login')
+      this.props.isOut().then(() => {
+        if (!this.props.logout.isLogged) {
+          this.props.navigation.navigate('Greeting User')
+        }
+      })
     }
   }
 
@@ -289,4 +289,4 @@ const mapStateToProps = (state) => ({
   isOut: state.SecurityCheck
 })
 
-export default connect(mapStateToProps, { getUser, isLogout, isOut })(Profile)
+export default connect(mapStateToProps, { getUser, isOut })(Profile)

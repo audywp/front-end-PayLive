@@ -13,7 +13,6 @@ const allReducers = combineReducers({
   Register,
   Verify,
   MakeSecurity,
-  SecurityCheck,
   UserDetails,
   TopUp,
   Cash,

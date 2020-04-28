@@ -14,30 +14,30 @@ class CodeOTPScreen extends Component {
       id: 0
     }
 
-    this.handleVerify = () => {
+    this.handleVerify = async () => {
       const data = {
         id: this.props.route.params.data,
         code: this.state.code
       }
-      this.props.setVerify(data.id, data.code)
+      this.props.setVerify(data.id, data.code).then(() => {
+        if (this.props.verify.isVerified) {
+          this.props.navigation.navigate('Buat Code', { data: data.id })
+        }
+        if (this.props.verify.isLoading === true) {
+          this.setState({
+            content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
+          })
+        }
+      })
       if (this.props.verify.isLoading === false) {
         this.setState({
-          content: this.state.content = <Spinner color='white' />
-        })
-      }
-      if (this.props.verify.isLoading === true) {
-        this.setState({
-          content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
+          content: this.state.content = <Spinner color='#00d2d3' />
         })
       }
     }
-    console.log(this.props.route)
   }
 
   render () {
-    if (this.props.verify.isVerified === true) {
-      this.props.navigation.navigate('Buat Code', { data: this.props.verify.data.data })
-    }
     return (
       <View>
         <View>

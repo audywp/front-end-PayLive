@@ -28,22 +28,25 @@ class LoginScreen extends Component {
         this.setState({ phoneError: null })
       }
     }
-    this.handleLogin = () => {
+    this.handleLogin = async () => {
       const data = {
         phone: this.state.phone
       }
-      this.props.setLogin(data)
+      this.props.setLogin(data).then(() => {
+        if (this.props.login.checkSuccess === true) {
+          this.props.navigation.navigate('Security Code', this.props.login.data)
+        }
+        if (this.props.login.isLoading === true) {
+          this.setState({
+            content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
+          })
+        }
+      })
       if (this.props.login.isLoading === false) {
         this.setState({
           content: this.state.content = <Spinner color='white' />
         })
         console.log('test')
-      }
-      if (this.props.login.isLoading === true) {
-        this.setState({
-          content: this.state.content = <Text style={{ color: 'white' }}> Berikutnya </Text>
-        })
-        this.props.navigation.navigate('Security Code', this.props.login.data)
       }
     }
   }
@@ -71,6 +74,7 @@ class LoginScreen extends Component {
                   keyboardType='phone-pad'
                   onChangeText={text => this.setState({ phone: text })}
                   onBlur={() => this.checkphone()}
+                  maxLength={12}
                   errorStyle={{ color: 'red' }}
                   errorMessage={
                     !this.state.phoneError ? false : 'Silahkan masukan nomor ponsel anda'
