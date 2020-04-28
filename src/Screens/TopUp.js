@@ -17,7 +17,7 @@ class TopUp extends Component {
       e.preventDefault()
       const idUser = this.state.idUser
       const data = {
-        balance: this.state.balance
+        balance: parseInt(this.state.balance)
       }
       await this.props.topUp(idUser, data)
       await this.props.getUser(idUser)
@@ -41,9 +41,8 @@ class TopUp extends Component {
   }
 
   render () {
-    console.log(this.state.balance)
-    console.log('id', this.state.idUser)
     const { usersdetails } = this.props.profile
+    console.log(this.state.balance)
     return (
       <View>
         <View style={{ height: '30%' }}>
@@ -65,21 +64,21 @@ class TopUp extends Component {
             <View style={{ marginBottom: 15, flexDirection: 'row', justifyContent: 'space-around' }}>
               <TouchableOpacity
                 onPress={() => this.setState({
-                  balance: '10.000'
+                  balance: '10000'
                 })}
               >
                 <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 10.000</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.setState({
-                  balance: '50.000'
+                  balance: '50000'
                 })}
               >
                 <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 50.000</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.setState({
-                  balance: '100.000'
+                  balance: '100000'
                 })}
               >
                 <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 100.000</Text>
