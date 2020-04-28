@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
 import { Card } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import AsyncStorage from '@react-native-community/async-storage'
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => {

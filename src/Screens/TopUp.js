@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { Card } from 'native-base'
 import { topUp } from '../Redux/Actions/TopUp'
 import { getUser } from '../Redux/Actions/ActionsUser'
@@ -10,7 +10,7 @@ class TopUp extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      balance: '',
+      balance: null,
       idUser: ''
     }
     this.onSubmit = async e => {
@@ -41,10 +41,12 @@ class TopUp extends Component {
   }
 
   render () {
+    console.log(this.state.balance)
+    console.log('id', this.state.idUser)
     const { usersdetails } = this.props.profile
     return (
       <View>
-        <View style={{ height: '40%' }}>
+        <View style={{ height: '30%' }}>
           <Card style={{ padding: 10, textAlign: 'center' }}>
             <Text style={{ marginBottom: 15, fontSize: 17, fontWeight: 'bold' }}>
             Top Up Ke
@@ -55,25 +57,38 @@ class TopUp extends Component {
             </Card>
           </Card>
         </View>
-        <View style={{ }}>
+        <ScrollView style={{ height: '70%' }}>
           <Card style={{ paddingHorizontal: 10, textAlign: 'center', paddingVertical: 20 }}>
             <Text style={{ marginBottom: 15, fontSize: 17, fontWeight: 'bold' }}>
             Pilih Nominal Top Up
             </Text>
             <View style={{ marginBottom: 15, flexDirection: 'row', justifyContent: 'space-around' }}>
-              <Card style={{ height: '100%', width: '30%', borderRadius: 20 }}>
+              <TouchableOpacity
+                onPress={() => this.setState({
+                  balance: '10.000'
+                })}
+              >
                 <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 10.000</Text>
-              </Card>
-              <Card style={{ height: '100%', width: '30%', borderRadius: 20 }}>
-                <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 10.000</Text>
-              </Card>
-              <Card style={{ height: '100%', width: '30%', borderRadius: 20 }}>
-                <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 10.000</Text>
-              </Card>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({
+                  balance: '50.000'
+                })}
+              >
+                <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 50.000</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.setState({
+                  balance: '100.000'
+                })}
+              >
+                <Text style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}> Rp 100.000</Text>
+              </TouchableOpacity>
             </View>
             <Text style={{ marginBottom: 15, marginTop: 10, paddingLeft: 10 }}>Atau Masukkan nominal Top Up disini</Text>
             <TextInput
               placeholder='Minimal Rp 10.000'
+              value={this.state.balance}
               keyboardType='phone-pad'
               style={styles.input}
               onChangeText={(text) => this.setState({ balance: text })}
@@ -83,7 +98,7 @@ class TopUp extends Component {
             </TouchableOpacity>
           </Card>
 
-        </View>
+        </ScrollView>
       </View>
     )
   }
@@ -94,8 +109,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 16,
     paddingLeft: 45,
-    backgroundColor: 'rgba(0,0,0,0.15)',
-    color: 'rgba(255, 255, 255, 0.9)'
+    borderBottomColor: '#aaa',
+    color: 'black'
   },
   btnJoinNow: {
     height: 45,
