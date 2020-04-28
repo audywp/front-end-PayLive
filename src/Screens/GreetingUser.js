@@ -3,9 +3,15 @@ import { StyleSheet, Text, ScrollView, Dimensions } from 'react-native'
 import { Card } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage'
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => {
+  return {
+    login: state.Login
+  }
+}
 const { width: WIDTH } = Dimensions.get('window')
-export default class GreetingUser extends Component {
+export default connect(mapStateToProps)(class GreetingUser extends Component {
   constructor (props) {
     super(props)
     this.handleScreenToLogin = () => {
@@ -14,7 +20,7 @@ export default class GreetingUser extends Component {
   }
 
   render () {
-    console.log(AsyncStorage.getItem('token'))
+    console.log(this.props.login.isLogged)
     console.disableYellowBox = true
     return (
       <ScrollView horizontal>
@@ -44,7 +50,7 @@ export default class GreetingUser extends Component {
       </ScrollView>
     )
   }
-}
+})
 
 const styles = StyleSheet.create({
   btn: {

@@ -8,7 +8,7 @@ import UserDetails from './ReducerUser'
 import TopUp from './TopUp'
 
 const allReducers = combineReducers({
-  Login, Register, Verify, MakeSecurity, SecurityCheck, UserDetails, TopUp
+  Login, Register, Verify, MakeSecurity, UserDetails, TopUp
 })
 
 export default allReducers

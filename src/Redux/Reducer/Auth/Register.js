@@ -16,8 +16,12 @@ export default function Register (state = intialState, { type, payload }) {
     case 'FAILED':
       return {
         ...state,
-        isLoading: false,
-        data: payload
+        isLoading: false
+      }
+    case 'IS_SUCCESSREGISTER':
+      return {
+        ...state,
+        isRegistered: false
       }
     default:
       return { ...state }

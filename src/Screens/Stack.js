@@ -20,6 +20,7 @@ import { connect } from 'react-redux'
 // redux state
 import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const Stack = createStackNavigator()
 const mapStateToProps = state => {
@@ -30,12 +31,12 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps, { SecurityCheck, setVerify })(class StackScreen extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {
-  //     token: ''
-  //   }
-  // }
+  constructor (props) {
+    super(props)
+    this.state = {
+      token: ''
+    }
+  }
 
   // componentDidMount () {
   //   this.getToken()
@@ -51,27 +52,37 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
   //     console.log(err)
   //   }
   // }
+  async componentDidMount () {
+    const storage = await AsyncStorage.getItem('token')
+    this.setState({
+      token: storage
+    })
+  }
 
   render () {
+    console.log(this.props.login.isLogged)
     return (
       <Stack.Navigator>
-        {this.props.check && this.props.check.isLogged
+        {this.props.login.isLogged
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
+
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
-        <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
-        <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
-        <Stack.Screen name='Buat Code' component={MakeSecurity} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
-        <Stack.Screen name='Confirm Security' component={ConfirmSecurity} options={{ headerShwon: true }} />
-        <Stack.Screen name='Lupa Security Code' component={LupaSecurityCode} options={{ headerShown: true }} />
-        <Stack.Screen name='CodeOTP' component={CodeOTP} options={{ headerShown: true }} />
-        <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
-        {/* <Stack.Screen name='Transfer PayLive' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
-        <Stack.Screen name='Konfirmasi Transfer' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
+        {/* <Stack.Screen name='Transfer PayLive' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
+        {/* <Stack.Screen name='Konfirmasi Transfer' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
         <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+
+        <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Lupa Security Code' component={LupaSecurityCode} options={{ headerShown: true }} />
+        <Stack.Screen name='Confirm Security' component={ConfirmSecurity} options={{ headerShwon: true }} />
+        <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='CodeOTP' component={CodeOTP} options={{ headerShown: true }} />
+        <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Buat Code' component={MakeSecurity} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+
       </Stack.Navigator>
     )
   }

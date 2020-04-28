@@ -90,10 +90,16 @@ class JoinPayLive extends Component {
           content: this.state.content = <Text style={{ color: 'white' }}>Berikutnya</Text>
         })
       }
+      if (this.props.register.isRegistered) {
+        this.setState({
+          modalVisible: true
+        })
+      }
     }
   }
 
   render () {
+    console.log(this.props.register)
     console.disableYellowBox = true
     return (
       <ScrollView style={{ paddingHorizontal: 10 }}>
@@ -121,6 +127,7 @@ class JoinPayLive extends Component {
             inputStyle={{ fontSize: 15, marginTop: -5 }}
             label='Nomor Ponsel'
             keyboardType='phone-pad'
+            maxLength={12}
             labelStyle={{ color: 'black', fontSize: 12 }}
             onChangeText={text => this.setState({ phone: text })}
             onBlur={() => this.checkphone()}
@@ -168,7 +175,7 @@ class JoinPayLive extends Component {
           <Modal
             animationType='slide'
             transparent
-            visible={this.props.register.isRegistered === false ? this.state.modalVisible === true : this.state.modalVisible === false}
+            visible={this.props.register.isRegistered}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.')
             }}
@@ -194,6 +201,7 @@ class JoinPayLive extends Component {
                       this.setState({
                         modalVisible: !this.state.modalVisible
                       })
+                      this.props.register.isRegistered = false
                       this.props.navigation.navigate('CodeOTP', { data: this.props.register.data.id })
                     }}
                     style={{
