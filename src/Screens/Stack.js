@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Login from './LoginScreen'
 import Join from './JoinPayLiveScreen'
 import SKKP from './SKKPScreen'
+// import Transfer from './TransferPaylive'
 import SecurityCode from './SecurityCode'
 import LupaSecurityCode from './LupaSecurityCode'
 import CodeOTP from './CodeOTPScreen'
@@ -16,14 +17,9 @@ import UbahEmail from './UbahEmail'
 import ConfirmSecurity from './ConfirmSecurityCode'
 import { connect } from 'react-redux'
 
-
 // redux state
 import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
-import { setLogin } from '../Redux/Actions/Auth/Login'
 import { setVerify } from '../Redux/Actions/Auth/Verify'
-// import { AsyncStorage } from 'react-native'
-import { REGISTER } from 'redux-persist'
-import AsyncStorage from '@react-native-community/async-storage'
 
 const Stack = createStackNavigator()
 const mapStateToProps = state => {
@@ -59,10 +55,10 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
   render () {
     return (
       <Stack.Navigator>
-        {this.props.check.isLogged === true
+        {this.props.check && this.props.check.isLogged
           ? <Stack.Screen name='Home' component={BottomStack} options={{ headerShown: false }} />
           : <Stack.Screen name='Greeting User' component={GreetingUser} options={{ headerShown: false }} />}
-         <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Security Code' component={SecurityCode} options={{ title: 'SIGN IN', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Join PayLive' component={Join} options={{ title: 'Join PayLive', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='SKKP' component={SKKP} options={{ title: 'Syarat & Ketentuan', headerShown: true, headerTintColor: '#5f27cd' }} />
@@ -73,6 +69,8 @@ export default connect(mapStateToProps, { SecurityCheck, setVerify })(class Stac
         <Stack.Screen name='Top Up' component={TopUp} options={{ title: 'TOP UP', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Category Pulsa' component={CategoryPulsa} options={{ title: 'Pulsa', headerShown: true, headerTintColor: '#5f27cd' }} />
         <Stack.Screen name='Edit Profile' component={EditProfile} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+        {/* <Stack.Screen name='Transfer PayLive' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
+        <Stack.Screen name='Konfirmasi Transfer' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
         <Stack.Screen name='Ubah Email' component={UbahEmail} options={{ headerShown: true, headerTintColor: '#5f27cd' }} />
       </Stack.Navigator>
     )

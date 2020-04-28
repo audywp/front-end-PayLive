@@ -11,9 +11,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { getUser } from '../Redux/Actions/ActionsUser'
 import { connect } from 'react-redux'
 import { isLogout } from '../Redux/Actions/Auth/Login'
-import { isLogout as logout } from '../Redux/Actions/Auth/SecurityCheck'
-
-
+import { isOut } from '../Redux/Actions/Auth/SecurityCheck'
 const styles = StyleSheet.create({
   profilePicture: {
     marginTop: 20,
@@ -287,7 +285,8 @@ class Profile extends Component {
 }
 const mapStateToProps = (state) => ({
   profile: state.UserDetails,
-  logout: state.Login
+  logout: state.Login,
+  isOut: state.SecurityCheck
 })
 
-export default connect(mapStateToProps, { getUser, isLogout })(Profile)
+export default connect(mapStateToProps, { getUser, isLogout, isOut })(Profile)

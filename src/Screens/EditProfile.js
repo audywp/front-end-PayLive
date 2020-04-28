@@ -5,6 +5,7 @@ import { TouchableOpacity, Dimensions} from 'react-native'
 import axios from 'axios'
 import Icon from 'react-native-vector-icons/AntDesign'
 import Iconedit from 'react-native-vector-icons/MaterialIcons'
+import UpdateProfile from '../Redux/Actions/EditProfile'
 import {
   Alert,
   Modal,
@@ -27,6 +28,11 @@ class EditProfile extends Component {
       upload: false,
       modalVisible: false
     }
+
+    this.handleUpdate = () => {
+      this.props.UpdateProfile()
+    }
+
     this.submitData = (e) => {
       e.preventDefault()
       console.log(this.props.profile)
@@ -113,19 +119,20 @@ class EditProfile extends Component {
               )}
             </TouchableOpacity>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'space-around' }}>
+          <View style={{ width: '100%', paddingHorizontal: 10 }}>
             <Input
+              containerStyle= {{ marginBottom: 15 }}
               inputStyle={{ fontSize: 15 }}
               placeholder='Ainaya'
               placeholderTextColor='black'
               label='Nama Lengkap'
               labelStyle={{ color: 'black', fontSize: 12 }}
             />
-            <TouchableOpacity style={{ width: '100%', paddingHorizontal: 10 }} onPress={() => {
+            <TouchableOpacity style={{ }} onPress={() => {
                 this.setModalVisible(true);
               }}>
             <Input
-              
+              containerStyle= {{ marginBottom: 15 }}
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='085876927639'
@@ -136,7 +143,7 @@ class EditProfile extends Component {
             />
             </TouchableOpacity>
              <Input
-             
+              containerStyle= {{ marginBottom: 15 }}
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='ainayass@gmail.com'
@@ -189,13 +196,13 @@ class EditProfile extends Component {
 
 const styles = StyleSheet.create({
   btnJoinNow: {
-    width: WIDTH - 55,
     height: 45,
     borderRadius: 25,
     backgroundColor: '#00d2d3',
     marginTop: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'red'
   },
   centeredView: {
     flex: 1,
@@ -210,6 +217,7 @@ const styles = StyleSheet.create({
     padding: 35,
     height: 200,
     width: 330,
+    justifyContent: 'center',
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
