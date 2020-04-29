@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, SectionList, FlatList} from 'react-native';
 import {Card} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AsyncStorage from '@react-native-community/async-storage';
 // import Config from '../Utils/config';
 import axios from 'axios';
 import {getHistory} from '../Redux/Actions/Cash';
@@ -12,8 +13,12 @@ class History extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.getHistory();
+  async componentDidMount() {
+    this.props.getHistory(await AsyncStorage.getItem('id_user'));
+    console.log(
+      'samartungga',
+      this.props.getHistory(await AsyncStorage.getItem('id_user')),
+    );
   }
 
   render() {
