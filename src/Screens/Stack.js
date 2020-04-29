@@ -17,6 +17,7 @@ import EditProfile from './EditProfile';
 import UbahEmail from './UbahEmail';
 import ConfirmSecurity from './ConfirmSecurityCode';
 import TransferPaylive from './TransferPaylive';
+import KonfirmasiTransfer from './KonfirmasiTransfer';
 import {connect} from 'react-redux';
 
 // redux state
@@ -117,7 +118,7 @@ export default connect(
           />
           <Stack.Screen
             name="Konfirmasi Transfer"
-            component={Transfer}
+            component={KonfirmasiTransfer}
             options={{headerShown: true, headerTintColor: '#5f27cd'}}
           />
           <Stack.Screen
