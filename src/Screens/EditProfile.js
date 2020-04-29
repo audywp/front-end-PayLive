@@ -5,7 +5,8 @@ import { TouchableOpacity, Dimensions} from 'react-native'
 import axios from 'axios'
 import Icon from 'react-native-vector-icons/AntDesign'
 import Iconedit from 'react-native-vector-icons/MaterialIcons'
-import UpdateProfile from '../Redux/Actions/EditProfile'
+import {UpdateProfile, GetProfile} from '../Redux/Actions/EditProfile'
+import { getUser } from '../Redux/Actions/ActionsUser'
 import {
   Alert,
   Modal,
@@ -16,7 +17,8 @@ import {
   TextInput
 } from "react-native";
 // import {updateProfile} from './'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
+import AsyncStorage from '@react-native-community/async-storage';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -26,38 +28,41 @@ class EditProfile extends Component {
     this.state = {
       picture: '',
       upload: false,
-      modalVisible: false
+      modalVisible: false,
+      id: '',
+      data: {},
+      phone: ''
     }
 
     this.handleUpdate = () => {
       this.props.UpdateProfile()
     }
 
-    this.submitData = (e) => {
-      e.preventDefault()
-      console.log(this.props.profile)
-      const data = new FormData()
-      const File = {
-        uri: this.state.picture.uri,
-        name: this.state.picture.fileName,
-        type: 'image/jpeg',
-        size: this.state.fileSize
-      }
-      data.append('picture', File)
-      data.append('phone', '085876927657')
-      data.append('fullname', 'Ayako')
-      data.append('email', 'kobayashi@gmail.com')
+    this.submitData = async (e) => {
+      // e.preventDefault()
+      console.log(await this.props.UpdateProfile())
+      
+      // console.log(this.props.profile)
+      // const data = new FormData()
+      // const File = {
+      //   uri: this.state.picture.uri,
+      //   name: this.state.picture.fileName,
+      //   type: 'image/jpeg',
+      //   size: this.state.fileSize
+      // }
+      // data.append('picture', File)
+      // data.append('phone', '085876927657')
+      // data.append('fullname', 'Ayako')
+      // data.append('email', 'kobayashi@gmail.com')
 
-      const bodyFormData = {
-        // method: 'patch',
-        body: data,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-
-      // this.props.updateProfile(7, data)
+      // const bodyFormData = {
+      //   // method: 'patch',
+      //   body: data,
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'multipart/form-data'
+      //   }
+      // }
     }
   }
 
@@ -88,7 +93,18 @@ class EditProfile extends Component {
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
+
+  async componentDidMount() {
+   const phoneNumb = await AsyncStorage.getItem('phone')
+   this.setState({
+      phone: phoneNumb
+   })
+  }
+  
   render () {
+    console.log(this.state.phone)
+    console.log(this.props.profile)
+    console.log('dataprof',this.state.data)
     const { modalVisible } = this.state;
     return (
       <View>
@@ -123,7 +139,8 @@ class EditProfile extends Component {
             <Input
               containerStyle= {{ marginBottom: 15 }}
               inputStyle={{ fontSize: 15 }}
-              placeholder='Ainaya'
+              placeholder='Nama Lengkap'
+              value={this.props.details.usersdetails && this.props.details.usersdetails.fullname}
               placeholderTextColor='black'
               label='Nama Lengkap'
               labelStyle={{ color: 'black', fontSize: 12 }}
@@ -136,6 +153,7 @@ class EditProfile extends Component {
               rightIcon={<Iconedit name='edit' size={30} color='grey' />}
               inputStyle={{ fontSize: 15 }}
               placeholder='085876927639'
+              value={this.state.phone}
               keyboardType= 'phone-pad'
               placeholderTextColor='black'
               label='Nomor Ponsel'
@@ -150,6 +168,7 @@ class EditProfile extends Component {
               placeholderTextColor='black'
               label='Email'
               labelStyle={{ color: 'black', fontSize: 12 }}
+              value={this.props.details.usersdetails && this.props.details.usersdetails.email}
             />
             <TouchableOpacity style={styles.btnJoinNow} onPress={this.submitData}>
               <Text style={{ color: 'white' }}>SIMPAN</Text>
@@ -247,8 +266,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state) => ({
-  profile: state.profile.profile
+  profile: state.Profile,
+  details: state.UserDetails
 })
-
-// export default connect(mapStateToProps, {updateProfile})(EditProfile)
-export default EditProfile
+export default connect(mapStateToProps, {UpdateProfile, GetProfile, getUser}) (EditProfile)
