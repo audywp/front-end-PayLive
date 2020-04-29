@@ -99,7 +99,7 @@ class Profile extends Component {
               <Text style={{fontSize: 20, fontWeight: 'bold'}}>
                 {usersdetails && usersdetails.fullname}
               </Text>
-              <Text> {usersdetails && usersdetails.cash}</Text>
+              <Text>Balance : Rp {usersdetails && usersdetails.cash}</Text>
             </View>
           </View>
           <View style={styles.Kios}>

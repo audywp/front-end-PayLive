@@ -10,6 +10,7 @@ import {Form, Item, Input, Label, Spinner} from 'native-base';
 import IconUser from 'react-native-vector-icons/EvilIcons';
 import {setLogin} from '../Redux/Actions/Auth/Login';
 import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const {width: WIDTH} = Dimensions.get('window');
 class LoginScreen extends Component {
@@ -38,6 +39,12 @@ class LoginScreen extends Component {
       const data = {
         phone: this.state.phone,
       };
+      try {
+        const phoneNumb = await AsyncStorage.setItem('phone', data.phone);
+        console.log(phoneNumb);
+      } catch (error) {
+        console.log(error);
+      }
       this.props.setLogin(data).then(() => {
         if (this.props.login.checkSuccess === true) {
           this.props.navigation.navigate(
