@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native'
 import { Card, Spinner } from 'native-base'
 import { topUp } from '../Redux/Actions/TopUp'
@@ -27,14 +28,19 @@ class TopUp extends Component {
       const data = {
         balance: parseInt(this.state.balance)
       }
-      await this.props.topUp(idUser, data)
-      await this.props.getUser(idUser)
+      await this.props.topUp(idUser, data).then(() => {
+        if (!this.props.topup.topUp.success) {
+          Alert.alert('Top up gagal!')
+        } else {
+          this.props.getUser(idUser)
+          this.props.navigation.navigate('Home')
+        }
+      })
       if (!this.props.topUp.isLoading) {
         this.setState({
           content: <Spinner color='white' />
         })
       }
-      await this.props.navigation.navigate('Home')
     }
   }
 
@@ -181,7 +187,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    topUp: state.TopUp,
+    topup: state.TopUp,
     profile: state.UserDetails
   }
 }

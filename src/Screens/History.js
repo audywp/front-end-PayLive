@@ -1,59 +1,71 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, SectionList, FlatList } from 'react-native'
+import { View, Text, StyleSheet, SectionList, FlatList,Alert } from 'react-native'
 import { Card } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 // import Config from '../Utils/config';
 import axios from 'axios'
-import { getHistory } from '../Redux/Actions/Cash'
+import { getHistory, getHistoryMore } from '../Redux/Actions/Cash'
 import { connect } from 'react-redux'
 import AsyncStorage from '@react-native-community/async-storage'
 
 class History extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      currentPage: 1
+    }
+  }
+
+  onLoadMore = async () => {
+    this.setState({
+      currentPage: this.state.currentPage+1
+    })
+    const id = await AsyncStorage.getItem('id_user')
+    this.props.getHistoryMore(id, 2)
+    console.log(this.props.history.data)
+    // Alert.alert('test')
   }
 
   async componentDidMount () {
     const id = await AsyncStorage.getItem('id_user')
-    this.props.getHistory(id)
+    this.props.getHistory(id, 1)
   }
 
   render () {
+    
     console.log('saldo', this.props.history.data)
     return (
-      <View style={styles.container}>
-        {this.props.history.data && this.props.history.data.map((u, i) => {
-          // <Card style={{backgroundColor: 'red'}}>
-          return (
-            <Card>
-              <View key={i}>
-                <Text>{u.created_at.slice(0, 10)}</Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <Text>{u.name_transaction}</Text>
-                  <Text>
-                    {u.name_transaction === 'TOP UP' ? (
-                      <Icon name='arrow-up-bold' color='green' size={16} />
-                    ) : (
-                      <Icon name='arrow-down-bold' color='red' size={16} />
-                    )}
-                  </Text>
-                  <Text style={{ color: 'green' }}>
-                    {' '}
-                    {u.name_transaction === 'TOP UP'
-                      ? '+'.concat(u.balance)
-                      : '-'.concat(u.balance)}{' '}
-                  </Text>
-                </View>
-              </View>
-            </Card>
-          )
-        })}
-      </View>
+      <FlatList
+        data={this.props.history.data}
+        renderItem={({ item }) => (<Card>
+          <View>
+            <Text>{item.created_at}</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
+              <Text>{item.name_transaction}</Text>
+              <Text>
+                {item.name_transaction === 'TOP UP' ? (
+                  <Icon name='arrow-up-bold' color='green' size={16} />
+                ) : (
+                  <Icon name='arrow-down-bold' color='red' size={16} />
+                )}
+              </Text>
+              <Text style={{ color: 'green' }}>
+                {item.name_transaction === 'TOP UP'
+                  ? '+'.concat(item.balance)
+                  : '-'.concat(item.balance)}{' '}
+              </Text>
+            </View>
+          </View>
+        </Card>)}
+        keyExtractor={item => item.id}
+        onEndReached={this.onLoadMore}
+        onEndReachedThreshold={0.1}
+      />
     )
   }
 }
@@ -93,5 +105,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getHistory }
+  { getHistory, getHistoryMore }
 )(History)

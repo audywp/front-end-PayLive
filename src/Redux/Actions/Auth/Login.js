@@ -40,4 +40,7 @@ export const isOut = () => async dispatch => {
   dispatch({
     type: 'IS_LOGOUT'
   })
+  dispatch({
+    type: 'CLEAR_DATA'
+  })
 }

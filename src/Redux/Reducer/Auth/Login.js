@@ -30,7 +30,7 @@ export default function Login (state = intialState, { type, payload }) {
         ...state,
         isLoading: false,
         isLogged: false,
-        data: null
+        data: payload
       }
     case 'LOGIN':
       return {

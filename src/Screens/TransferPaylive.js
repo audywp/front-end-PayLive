@@ -5,7 +5,8 @@ import {
   Dimensions,
   TouchableOpacity,
   StyleSheet,
-  TextInput
+  TextInput,
+  Alert
 } from 'react-native'
 import { connect } from 'react-redux'
 import { TransferPaylive } from '../Redux/Actions/TransferPaylive'
@@ -38,8 +39,14 @@ export default connect(mapStateToProps, { TransferPaylive, getUser })(class Tran
     }
     
     this.props.TransferPaylive(id, data).then(()=>{
+      if (!this.props.transfer.transfer.success) {
+        console.log(this.props.transfer.transfer.success)
+        Alert.alert('Saldo anda tidak Mencukupi')
+      } else {
+        console.log('else', this.props.transfer.transfer)
         this.props.getUser(id)
         this.props.navigation.navigate('Konfirmasi Transfer')
+      }
     })
     if (!this.props.transfer.isLoading) {
       this.setState({
@@ -57,6 +64,7 @@ export default connect(mapStateToProps, { TransferPaylive, getUser })(class Tran
     }
   }
   render () {
+    console.log(this.props.transfer.transfer)
     const { amount, phone } = this.state
     console.log(amount, phone)
     return (
