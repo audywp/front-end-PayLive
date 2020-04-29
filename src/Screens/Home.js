@@ -32,6 +32,7 @@ class Home extends Component {
       profile_picture: '',
       cash: '',
     };
+    this.handleToTransferPaylive = this.handleToTransferPaylive.bind(this)
   }
 
   handleToTransferPaylive = () => {
@@ -59,6 +60,7 @@ class Home extends Component {
       console.log(err);
     }
   }
+
 
   render() {
     console.log(this.state.idUser);
@@ -219,8 +221,7 @@ class Home extends Component {
                 }}>
                 <TouchableOpacity
                   onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                    this.props.navigation.navigate('Category Pulsa')}>
                   <MaterialIcons
                     style={styles.IconNav}
                     name="phone-android"

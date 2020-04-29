@@ -1,7 +1,7 @@
 const initialState = {
   transfer: {},
-  isLoading: false,
-};
+  isLoading: false
+}
 
 const TransferPaylive = (state = initialState, action) => {
   switch (action.type) {
@@ -9,12 +9,12 @@ const TransferPaylive = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        transfer: action.payload,
-      };
+        transfer: action.payload
+      }
     }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default TransferPaylive;
+export default TransferPaylive

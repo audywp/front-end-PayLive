@@ -1,48 +1,48 @@
-import React, {Component} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import Login from './LoginScreen';
-import Join from './JoinPayLiveScreen';
-import SKKP from './SKKPScreen';
-import History from './History';
+import React, { Component } from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
+import Login from './LoginScreen'
+import Join from './JoinPayLiveScreen'
+import SKKP from './SKKPScreen'
+import History from './History'
 // import Transfer from './TransferPaylive'
-import SecurityCode from './SecurityCode';
-import LupaSecurityCode from './LupaSecurityCode';
-import CodeOTP from './CodeOTPScreen';
-import GreetingUser from './GreetingUser';
-import BottomStack from './BottomStack';
-import MakeSecurity from './MakeSecurity';
-import TopUp from './TopUp';
-import CategoryPulsa from './CategoryPulsa';
-import EditProfile from './EditProfile';
-import UbahEmail from './UbahEmail';
-import ConfirmSecurity from './ConfirmSecurityCode';
-import TransferPaylive from './TransferPaylive';
-import KonfirmasiTransfer from './KonfirmasiTransfer';
-import {connect} from 'react-redux';
+import SecurityCode from './SecurityCode'
+import LupaSecurityCode from './LupaSecurityCode'
+import CodeOTP from './CodeOTPScreen'
+import GreetingUser from './GreetingUser'
+import BottomStack from './BottomStack'
+import MakeSecurity from './MakeSecurity'
+import TopUp from './TopUp'
+import CategoryPulsa from './CategoryPulsa'
+import EditProfile from './EditProfile'
+import UbahEmail from './UbahEmail'
+import ConfirmSecurity from './ConfirmSecurityCode'
+import TransferPaylive from './TransferPaylive'
+import KonfirmasiTransfer from './KonfirmasiTransfer'
+import { connect } from 'react-redux'
 
 // redux state
-import {SecurityCheck} from '../Redux/Actions/Auth/SecurityCheck';
-import {setVerify} from '../Redux/Actions/Auth/Verify';
-import AsyncStorage from '@react-native-community/async-storage';
+import { SecurityCheck } from '../Redux/Actions/Auth/SecurityCheck'
+import { setVerify } from '../Redux/Actions/Auth/Verify'
+import AsyncStorage from '@react-native-community/async-storage'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 const mapStateToProps = state => {
   return {
     check: state.SecurityCheck,
     verify: state.Verify,
-    login: state.Login,
-  };
-};
+    login: state.Login
+  }
+}
 export default connect(
   mapStateToProps,
-  {SecurityCheck, setVerify},
+  { SecurityCheck, setVerify }
 )(
   class StackScreen extends Component {
-    constructor(props) {
-      super(props);
+    constructor (props) {
+      super(props)
       this.state = {
-        token: '',
-      };
+        token: ''
+      }
     }
 
     // componentDidMount () {
@@ -59,139 +59,139 @@ export default connect(
     //     console.log(err)
     //   }
     // }
-    async componentDidMount() {
-      const storage = await AsyncStorage.getItem('token');
+    async componentDidMount () {
+      const storage = await AsyncStorage.getItem('token')
       this.setState({
-        token: storage,
-      });
+        token: storage
+      })
     }
 
-    render() {
-      console.log(this.props.login.isLogged);
+    render () {
+      console.log(this.props.login.isLogged)
       return (
         <Stack.Navigator>
           {this.props.login.isLogged ? (
             <Stack.Screen
-              name="Home"
+              name='Home'
               component={BottomStack}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
           ) : (
             <Stack.Screen
-              name="Greeting User"
+              name='Greeting User'
               component={GreetingUser}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
           )}
           <Stack.Screen
-            name="Login"
+            name='Login'
             component={Login}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Join PayLive"
+            name='Join PayLive'
             component={Join}
             options={{
               title: 'Join PayLive',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="Category Pulsa"
+            name='Category Pulsa'
             component={CategoryPulsa}
             options={{
               title: 'Pulsa',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="Edit Profile"
+            name='Edit Profile'
             component={EditProfile}
-            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+            options={{ headerShown: true, headerTintColor: '#5f27cd' }}
           />
           <Stack.Screen
-            name="Transfer PayLive"
+            name='Transfer PayLive'
             component={TransferPaylive}
-            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+            options={{ headerShown: true, headerTintColor: '#5f27cd' }}
           />
           <Stack.Screen
-            name="Konfirmasi Transfer"
+            name='Konfirmasi Transfer'
             component={KonfirmasiTransfer}
-            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+            options={{ headerShown: true, headerTintColor: '#5f27cd' }}
           />
           <Stack.Screen
-            name="Ubah Email"
+            name='Ubah Email'
             component={UbahEmail}
-            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+            options={{ headerShown: true, headerTintColor: '#5f27cd' }}
           />
 
           <Stack.Screen
-            name="Top Up"
+            name='Top Up'
             component={TopUp}
             options={{
               title: 'TOP UP',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="Lupa Security Code"
+            name='Lupa Security Code'
             component={LupaSecurityCode}
-            options={{headerShown: true}}
+            options={{ headerShown: true }}
           />
           <Stack.Screen
-            name="Confirm Security"
+            name='Confirm Security'
             component={ConfirmSecurity}
-            options={{headerShwon: true}}
+            options={{ headerShwon: true }}
           />
           <Stack.Screen
-            name="Security Code"
+            name='Security Code'
             component={SecurityCode}
             options={{
               title: 'SIGN IN',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="CodeOTP"
+            name='CodeOTP'
             component={CodeOTP}
-            options={{headerShown: true}}
+            options={{ headerShown: true }}
           />
           <Stack.Screen
-            name="SKKP"
+            name='SKKP'
             component={SKKP}
             options={{
               title: 'Syarat & Ketentuan',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="Buat Code"
+            name='Buat Code'
             component={MakeSecurity}
             options={{
               title: 'SIGN IN',
               headerShown: true,
-              headerTintColor: '#5f27cd',
+              headerTintColor: '#5f27cd'
             }}
           />
           <Stack.Screen
-            name="History"
+            name='History'
             component={History}
             options={{
               title: 'History',
               headerShown: true,
               headerTintColor: '#eef0f3',
               headerStyle: {
-                backgroundColor: '#4c2a86',
-              },
+                backgroundColor: '#4c2a86'
+              }
             }}
           />
         </Stack.Navigator>
-      );
+      )
     }
-  },
-);
+  }
+)
