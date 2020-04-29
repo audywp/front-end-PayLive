@@ -37,7 +37,7 @@ class Home extends Component {
   async componentDidMount() {
     await this.getId();
     await this.getUser();
-    console.log(await AsyncStorage.getItem('id_user'));
+    console.log('ini async storage', await AsyncStorage.getItem('id_user'));
   }
 
   async getUser() {

@@ -168,6 +168,18 @@ export default connect(
               headerTintColor: '#5f27cd',
             }}
           />
+          <Stack.Screen
+            name="History"
+            component={History}
+            options={{
+              title: 'History',
+              headerShown: true,
+              headerTintColor: '#eef0f3',
+              headerStyle: {
+                backgroundColor: '#4c2a86',
+              },
+            }}
+          />
         </Stack.Navigator>
       );
     }
