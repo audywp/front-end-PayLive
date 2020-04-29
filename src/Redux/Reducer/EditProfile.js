@@ -1,9 +1,10 @@
 const initialState = {
   data: {},
+  user: {},
   isLoading: false
 }
 
-const EditProfile = (state = initialState, { type, payload }) => {
+const EditProfile = (state = initialState, { type, payload, userPayload }) => {
   switch (type) {
     case 'EDIT_PROFILE':
       return {
@@ -14,7 +15,7 @@ const EditProfile = (state = initialState, { type, payload }) => {
     case 'GET_PROFILE':
       return {
         ...state,
-        data: payload
+        user: userPayload
       }
     default:
       return {

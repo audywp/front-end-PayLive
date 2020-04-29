@@ -6,13 +6,10 @@ import AsyncStorage from '@react-native-community/async-storage'
 export const setLogin = (data) => async dispatch => {
   try {
     const res = await axios.post(config.APP_BACKEND.concat('auth/signin'), data)
-    console.log(res.data)
     if (await res.data.success === true) {
       dispatch({
         type: 'IS_LOGIN',
         payload: res.data
-      }).then(() => {
-        RNEexitApp.exitApp()
       })
     } else {
       Alert.alert(res.data.msg)

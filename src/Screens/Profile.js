@@ -97,7 +97,7 @@ class Profile extends Component {
             />
             <View style={{ marginLeft: 15 }}>
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{usersdetails && usersdetails.fullname}</Text>
-              <Text> {usersdetails && usersdetails.cash}</Text>
+              <Text>Balance : Rp {usersdetails && usersdetails.cash}</Text>
             </View>
           </View>
           <View style={styles.Kios}>
