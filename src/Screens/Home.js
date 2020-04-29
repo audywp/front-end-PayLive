@@ -34,6 +34,10 @@ class Home extends Component {
     };
   }
 
+  handleToTransferPaylive = () => {
+    this.props.navigation.navigate('Transfer PayLive');
+  };
+
   async componentDidMount() {
     await this.getId();
     await this.getUser();
@@ -143,10 +147,7 @@ class Home extends Component {
                 </Text>
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Transfer PayLive')
-                  }>
+                <TouchableOpacity onPress={this.handleToTransferPaylive}>
                   <Feather name="upload" color="#4a2d8b" size={30} />
                 </TouchableOpacity>
 

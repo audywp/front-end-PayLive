@@ -16,6 +16,7 @@ import CategoryPulsa from './CategoryPulsa';
 import EditProfile from './EditProfile';
 import UbahEmail from './UbahEmail';
 import ConfirmSecurity from './ConfirmSecurityCode';
+import TransferPaylive from './TransferPaylive';
 import {connect} from 'react-redux';
 
 // redux state
@@ -109,8 +110,16 @@ export default connect(
             component={EditProfile}
             options={{headerShown: true, headerTintColor: '#5f27cd'}}
           />
-          {/* <Stack.Screen name='Transfer PayLive' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
-          {/* <Stack.Screen name='Konfirmasi Transfer' component={Transfer} options={{ headerShown: true, headerTintColor: '#5f27cd' }} /> */}
+          <Stack.Screen
+            name="Transfer PayLive"
+            component={TransferPaylive}
+            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+          />
+          <Stack.Screen
+            name="Konfirmasi Transfer"
+            component={Transfer}
+            options={{headerShown: true, headerTintColor: '#5f27cd'}}
+          />
           <Stack.Screen
             name="Ubah Email"
             component={UbahEmail}
