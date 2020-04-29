@@ -91,8 +91,12 @@ class Profile extends Component {
           </View>
           <Text style={{fontSize: 28}}>Profile</Text>
           <View style={styles.profilePicture}>
-            <Image
-              source={require('../Assets/Images/user.png')}
+            <Avatar
+              rounded
+              source={{
+                uri: `http://localhost:3030/files/${usersdetails &&
+                  usersdetails.profile_picture}`,
+              }}
               style={{width: 45, height: 45}}
             />
             <View style={{marginLeft: 15}}>

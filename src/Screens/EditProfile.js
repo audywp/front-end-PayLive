@@ -48,13 +48,19 @@ class EditProfile extends Component {
         this.props.details.usersdetails.id_user;
 
       let formData = new FormData();
-      const file = {
-        filename: this.state.picture.fileName,
-        path: this.state.picture.uri,
-        mimetype: this.state.picture.type,
-        size: this.state.picture.fileSize,
-      };
+      // const file = {
+      //   filename: this.state.picture.fileName,
+      //   path: this.state.picture.uri,
+      //   mimetype: this.state.picture.type,
+      //   size: this.state.picture.fileSize,
+      // };
 
+      const file = {
+        name: this.state.picture.fileName,
+        type: this.state.picture.type,
+        uri: this.state.picture.uri,
+      };
+      console.log('ini file', file);
       formData.append('fullname', this.state.name);
       formData.append('email', this.state.email);
 
