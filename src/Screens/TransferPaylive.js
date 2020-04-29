@@ -114,6 +114,17 @@ export default connect(mapStateToProps, { TransferPaylive, getUser })(class Tran
   }
 })
 
+const mapStateToProps = state => {
+  return {
+    profile: state.UserDetails,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {getUser},
+)(TransferPaylive);
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
