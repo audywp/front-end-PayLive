@@ -200,9 +200,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <FontAwesome5
                     style={styles.IconNav}
                     name="lightbulb"
@@ -239,9 +237,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <Ionicons
                     style={styles.IconNav}
                     name="ios-globe"
@@ -259,9 +255,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <FontAwesome5
                     style={styles.IconNav}
                     name="money-check-alt"
@@ -281,9 +275,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <FontAwesome5
                     style={styles.IconNav}
                     name="shield-alt"
@@ -301,9 +293,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <Feather
                     style={styles.IconNav}
                     name="tv"
@@ -321,9 +311,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <Entypo
                     style={styles.IconNav}
                     name="tv"
@@ -341,9 +329,7 @@ class Home extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate('Category Pulsa')
-                  }>
+                  disabled>
                   <Entypo
                     style={styles.IconNav}
                     name="dots-three-horizontal"

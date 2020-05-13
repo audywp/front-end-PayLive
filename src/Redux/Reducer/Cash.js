@@ -21,7 +21,6 @@ export default function Cash (state = initialState, { type, payload }) {
         data: payload
       }
     case 'MORE_HISTORY':
-      const datas = [...state.data, payload]
 
       return {
         ...state,

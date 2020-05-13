@@ -44,7 +44,7 @@ class CodeOTPScreen extends Component {
           <Text style={{ color: '#5f27cd', textAlign: 'center', marginTop: 30, fontWeight: 'bold', fontSize: 18, fontFamily: 'Roboto' }}>
             Masukkan Kode
           </Text>
-          <Text style={{ textAlign: 'center' }}> Kami telah mengirimkan kode ke email Anda</Text>
+          <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, color:'#5f27cd' }}> {this.props.register.data && this.props.register.data.code.verification_code}</Text>
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 60 }}>
           <TextInput
@@ -113,7 +113,8 @@ class CodeOTPScreen extends Component {
 }
 const mapStatetoProps = state => {
   return {
-    verify: state.Verify
+    verify: state.Verify,
+    register: state.Register
   }
 }
 export default connect(mapStatetoProps, { setVerify })(CodeOTPScreen)
