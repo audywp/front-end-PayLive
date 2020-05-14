@@ -27,64 +27,32 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       picture: '',
-      nama: '',
       upload: false,
       modalVisible: false,
       id: '',
       data: {},
       phone: '',
-      email:
-        this.props.details.usersdetails &&
-        this.props.details.usersdetails.email,
-      name:
-        this.props.details.usersdetails &&
-        this.props.details.usersdetails.fullname,
+    };
+
+    this.handleUpdate = () => {
+      this.props.UpdateProfile();
     };
 
     this.submitData = async e => {
-      console.log('ok');
-      const id =
-        this.props.details.usersdetails &&
-        this.props.details.usersdetails.id_user;
+      // console.log(await this.props.UpdateProfile());
 
-      let formData = new FormData();
-      // const file = {
-      //   filename: this.state.picture.fileName,
-      //   path: this.state.picture.uri,
-      //   mimetype: this.state.picture.type,
-      //   size: this.state.picture.fileSize,
-      // };
-
-      const file = {
-        name: this.state.picture.fileName,
-        type: this.state.picture.type,
+      console.log(this.props.profile);
+      const data = new FormData();
+      const File = {
         uri: this.state.picture.uri,
+        name: this.state.picture.fileName,
+        type: 'image/jpeg',
+        size: this.state.fileSize,
       };
-      console.log('ini file', file);
-      formData.append('fullname', this.state.name);
-      formData.append('email', this.state.email);
-
-      if (this.state.upload) {
-        formData.append('picture', file);
-      }
-      console.log('ini update', id, formData);
-      await this.props.UpdateProfile(id, formData);
-      await this.props.getUser(id);
-      this.setState({upload: false});
-      this.props.navigation.navigate('Profile');
-
-      // console.log(this.props.profile)
-      // const data = new FormData()
-      // const File = {
-      //   uri: this.state.picture.uri,
-      //   name: this.state.picture.fileName,
-      //   type: 'image/jpeg',
-      //   size: this.state.fileSize
-      // }
-      // data.append('picture', File)
-      // data.append('phone', '085876927657')
-      // data.append('fullname', 'Ayako')
-      // data.append('email', 'kobayashi@gmail.com')
+      data.append('fullname', 'Ayako');
+      data.append('phone', '085876927657');
+      data.append('email', 'kobayashi@gmail.com');
+      data.append('picture', File);
 
       // const bodyFormData = {
       //   // method: 'patch',
@@ -115,7 +83,6 @@ class EditProfile extends Component {
           upload: true,
           picture: response,
         });
-        console.log(response);
       }
     });
   };
@@ -125,7 +92,6 @@ class EditProfile extends Component {
   };
 
   async componentDidMount() {
-    console.log('ini didmoun', this.props.details);
     const phoneNumb = await AsyncStorage.getItem('phone');
     this.setState({
       phone: phoneNumb,
@@ -134,7 +100,8 @@ class EditProfile extends Component {
 
   render() {
     console.log(this.state.phone);
-    console.log(this.props.details);
+    console.log(this.props.profile);
+    console.log('dataprof', this.state.data);
     const {modalVisible} = this.state;
     return (
       <View>
@@ -161,9 +128,8 @@ class EditProfile extends Component {
                   rounded
                   containerStyle={{alignSelf: 'center'}}
                   source={{
-                    uri: `http://20.20.20.162:3030/files/${this.props.details
-                      .usersdetails &&
-                      this.props.details.usersdetails.profile_picture}`,
+                    uri:
+                      'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
                   }}
                   showEditButton
                 />
@@ -175,8 +141,10 @@ class EditProfile extends Component {
               containerStyle={{marginBottom: 15}}
               inputStyle={{fontSize: 15}}
               placeholder="Nama Lengkap"
-              value={this.state.name}
-              onChangeText={text => this.setState({name: text})}
+              value={
+                this.props.details.usersdetails &&
+                this.props.details.usersdetails.fullname
+              }
               placeholderTextColor="black"
               label="Nama Lengkap"
               labelStyle={{color: 'black', fontSize: 12}}
@@ -206,8 +174,10 @@ class EditProfile extends Component {
               placeholderTextColor="black"
               label="Email"
               labelStyle={{color: 'black', fontSize: 12}}
-              value={this.state.email}
-              onChangeText={text => this.setState({email: text})}
+              value={
+                this.props.details.usersdetails &&
+                this.props.details.usersdetails.email
+              }
             />
             <TouchableOpacity
               style={styles.btnJoinNow}

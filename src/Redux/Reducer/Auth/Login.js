@@ -1,7 +1,8 @@
 const intialState = {
   data: {},
   isLoading: false,
-  isLogged: false
+  isLogged: false,
+  checkSuccess: false
 }
 
 export default function Login (state = intialState, { type, payload }) {
@@ -10,21 +11,33 @@ export default function Login (state = intialState, { type, payload }) {
       return {
         ...state,
         isLoading: true,
-        data: payload,
-        isLogged: true
+        checkSuccess: true,
+        data: payload
+      }
+    case 'IS_VERIFIED':
+      return {
+        isLoading: true,
+        isLogged: true,
+        data: payload
       }
     case 'IS_FAILED':
       return {
         ...state,
-        isLogged: false,
-        isLoading: true,
         data: payload
       }
     case 'IS_LOGOUT':
       return {
         ...state,
+        isLoading: false,
         isLogged: false,
-        isLoading: true
+        data: payload
+      }
+    case 'LOGIN':
+      return {
+        data: payload,
+        isLoading: true,
+        isLogged: true,
+        checkSuccess: true
       }
     default:
       return state

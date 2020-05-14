@@ -12,6 +12,11 @@ const ReducerUser = (state = initialState, action) => {
         isLoading: true
       }
     }
+    case 'CLEAR_DATA':
+      return {
+        ...state,
+        usersdetails: []
+      }
     default:
       return state
   }

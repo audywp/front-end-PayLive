@@ -1,5 +1,5 @@
 const Config = {
-  APP_BACKEND: 'http://54.80.245.145/'
-}
+  APP_BACKEND: 'http://34.203.219.100:3030/',
+};
 
-export default Config
+export default Config;

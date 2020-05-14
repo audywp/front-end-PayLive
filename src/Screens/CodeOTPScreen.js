@@ -14,37 +14,37 @@ class CodeOTPScreen extends Component {
       id: 0
     }
 
-    this.handleVerify = () => {
+    this.handleVerify = async () => {
       const data = {
         id: this.props.route.params.data,
         code: this.state.code
       }
-      this.props.setVerify(data.id, data.code)
+      this.props.setVerify(data.id, data.code).then(() => {
+        if (this.props.verify.isVerified) {
+          this.props.navigation.navigate('Buat Code', { data: data.id })
+        }
+        if (this.props.verify.isLoading === true) {
+          this.setState({
+            content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
+          })
+        }
+      })
       if (this.props.verify.isLoading === false) {
         this.setState({
-          content: this.state.content = <Spinner color='white' />
-        })
-      }
-      if (this.props.verify.isLoading === true) {
-        this.setState({
-          content: this.state.content = <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#00d2d3', textAlign: 'center', marginTop: 50 }}>KIRIM</Text>
+          content: this.state.content = <Spinner color='#00d2d3' />
         })
       }
     }
-    console.log(this.props.route)
   }
 
   render () {
-    if (this.props.verify.isVerified === true) {
-      this.props.navigation.navigate('Buat Code', { data: this.props.verify.data.data })
-    }
     return (
       <View>
         <View>
           <Text style={{ color: '#5f27cd', textAlign: 'center', marginTop: 30, fontWeight: 'bold', fontSize: 18, fontFamily: 'Roboto' }}>
             Masukkan Kode
           </Text>
-          <Text style={{ textAlign: 'center' }}> Kami telah mengirimkan kode ke email Anda</Text>
+          <Text style={{ textAlign: 'center', fontSize: 16, marginTop: 10, color:'#5f27cd' }}> {this.props.register.data && this.props.register.data.code.verification_code}</Text>
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 60 }}>
           <TextInput
@@ -113,7 +113,8 @@ class CodeOTPScreen extends Component {
 }
 const mapStatetoProps = state => {
   return {
-    verify: state.Verify
+    verify: state.Verify,
+    register: state.Register
   }
 }
 export default connect(mapStatetoProps, { setVerify })(CodeOTPScreen)
