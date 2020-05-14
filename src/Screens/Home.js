@@ -158,9 +158,10 @@ class Home extends Component {
                 </Text>
               </View>
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <MaterialIcons name="history" color="#4a2d8b" size={30} />
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('History')}>
+                  <MaterialIcons name="history" color="#4a2d8b" size={30} />
+                </TouchableOpacity>
                 <Text
-                  onPress={() => this.props.navigation.navigate('History')}
                   style={{color: '#4a2d8b', fontFamily: 'Caladea-Regular'}}>
                   History
                 </Text>
